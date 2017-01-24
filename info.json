@@ -1,6 +1,7 @@
 {
   "pluginName" : "easy-products",
   "rootNameSpace" : "EasyProducts",
+  "PHPVersion" : "7.0.0",
   "LifeCycle" : {
     "optionsPrefix" : "easy_products"
   }
