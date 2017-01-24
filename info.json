@@ -1,0 +1,7 @@
+{
+  "pluginName" : "easy-products",
+  "rootNameSpace" : "EasyProducts",
+  "LifeCycle" : {
+    "optionsPrefix" : "easy_products"
+  }
+}
