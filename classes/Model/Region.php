@@ -48,4 +48,13 @@ class Region extends BaseModel
             'name' => 'VARCHAR(255)'
         ];
     }
+
+    /**
+     * Fetches all regions ordered by their name descending
+     *
+     * @return Region[]
+     */
+    public static function fetchAll () {
+        return static::fetchOrderedBy('name', 'DESC');
+    }
 }
