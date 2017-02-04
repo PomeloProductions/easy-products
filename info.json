@@ -4,6 +4,11 @@
   "displayName" : "Easy Products",
   "minPHPVersion" : "7.0.0",
   "LifeCycle" : {
-    "optionsPrefix" : "easy_products"
+    "optionsPrefix" : "easy_products",
+    "Model" : [
+      {
+        "className": "Model\\Region"
+      }
+    ]
   }
 }
