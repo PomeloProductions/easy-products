@@ -55,6 +55,6 @@ class Region extends BaseModel
      * @return Region[]
      */
     public static function fetchAll () {
-        return static::fetchOrderedBy('name', 'DESC');
+        return static::fetchOrderedBy('name', 'ASC');
     }
 }
