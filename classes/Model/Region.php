@@ -14,7 +14,7 @@ class Region extends BaseModel
 {
 
     /**
-     * @var The name of the region
+     * @var string The name of the region
      */
     public $name;
 
