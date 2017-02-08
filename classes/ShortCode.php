@@ -2,6 +2,8 @@
 
 namespace EasyProducts;
 
+use EasyProducts\Model\Product;
+use EasyProducts\Model\ShippingOption;
 use WordWrap\ShortCodeLoader;
 
 /**
@@ -21,6 +23,12 @@ class ShortCode extends ShortCodeLoader
      * @return string shortcode content
      */
     public function onShortcode($atts) {
+
+        $products = Product::fetchAllActive();
+
+        foreach ($products as $product) {
+            $product->shippingOptions = ShippingOption::fetchForProduct($product);
+        }
 
         return 'products short code';
     }
