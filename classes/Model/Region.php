@@ -25,7 +25,7 @@ class Region extends BaseModel
      * @return string the table name without a prefix
      */
     public static function getTableName() {
-        return "easy_products_regions";
+        return "regions";
     }
 
     /**
