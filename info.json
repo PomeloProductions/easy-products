@@ -5,6 +5,12 @@
   "minPHPVersion" : "7.0.0",
   "LifeCycle" : {
     "databaseNameSpace" : "easy_products",
+    "ShortCode": [
+      {
+        "name": "products_list",
+        "className": "ShortCode"
+      }
+    ],
     "Model" : [
       {
         "className": "Model\\Region"
