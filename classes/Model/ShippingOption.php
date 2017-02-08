@@ -46,6 +46,16 @@ class ShippingOption extends BaseModel
     public $add_on_rate;
 
     /**
+     * Fetches all shipping options for the passed in product
+     *
+     * @param Product $product The product that we are searching for
+     * @return ShippingOption[] All shipping options associated with the product
+     */
+    public static function fetchForProduct(Product $product) {
+        return static::fetchWhere(['product_id = ' . $product->id]);
+    }
+
+    /**
      * Overwrite this in your concrete class. Returns the table name used to
      * store models of this class.
      *
@@ -60,8 +70,7 @@ class ShippingOption extends BaseModel
      *
      * @return array
      */
-    public static function getSearchableFields()
-    {
+    public static function getSearchableFields() {
         // TODO: Implement getSearchableFields() method.
     }
 
