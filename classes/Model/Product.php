@@ -49,6 +49,25 @@ class Product extends BaseModel
      */
     public $active = false;
 
+
+    /**
+     * Fetch all products ordered by the order field
+     *
+     * @return Product[] All active products
+     */
+    public static function fetchAllActive() {
+        return static::fetchOrderedBy('order', 'ASC', 'AND `active` = 1');
+    }
+
+    /**
+     * Fetch all products
+     *
+     * @return Product[] All products
+     */
+    public static function fetchAll() {
+        return static::fetchOrderedBy('order', 'ASC');
+    }
+
     /**
      * Overwrite this in your concrete class. Returns the table name used to
      * store models of this class.
@@ -64,8 +83,7 @@ class Product extends BaseModel
      *
      * @return array
      */
-    public static function getSearchableFields()
-    {
+    public static function getSearchableFields() {
         // TODO: Implement getSearchableFields() method.
     }
 
