@@ -1,6 +1,6 @@
 <form method="post" id="easy_products-products_list">
     <ul>
-        {{#sliders}}
+        {{#products}}
             <li class="easy_products-product" data-cost="{{cost}}" data-weight="{{weight}}">
 
                 {{#shippingOptions}}
@@ -12,6 +12,6 @@
                 <h1>{{name}}</h1>
                 <p>{{description}}</p>
             </li>
-        {{/sliders}}
+        {{/products}}
     </ul>
 </form>
