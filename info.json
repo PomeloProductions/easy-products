@@ -5,6 +5,12 @@
   "minPHPVersion" : "7.0.0",
   "LifeCycle" : {
     "databaseNameSpace" : "easy_products",
+    "AssetLocation" : [
+      {
+        "type" : "mustache",
+        "location" : "assets/mustache"
+      },
+    ],
     "ShortCode": [
       {
         "name": "products_list",
