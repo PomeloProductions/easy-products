@@ -11,6 +11,9 @@
       },
       {
         "className": "Model\\Product"
+      },
+      {
+        "className": "Model\\ShippingOption"
       }
     ]
   }
