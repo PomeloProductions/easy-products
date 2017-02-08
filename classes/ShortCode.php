@@ -3,6 +3,7 @@
 namespace EasyProducts;
 
 use EasyProducts\Model\Product;
+use EasyProducts\Model\Region;
 use EasyProducts\Model\ShippingOption;
 use WordWrap\Assets\Template\Mustache\MustacheTemplate;
 use WordWrap\ShortCodeLoader;
@@ -33,6 +34,7 @@ class ShortCode extends ShortCodeLoader
 
         $data = [
             'submit_button_text' => 'Checkout',
+            'regions' => Region::fetchAll(),
             'products' => $products
         ];
 
