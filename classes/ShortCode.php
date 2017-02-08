@@ -4,6 +4,7 @@ namespace EasyProducts;
 
 use EasyProducts\Model\Product;
 use EasyProducts\Model\ShippingOption;
+use WordWrap\Assets\Template\Mustache\MustacheTemplate;
 use WordWrap\ShortCodeLoader;
 
 /**
@@ -30,7 +31,13 @@ class ShortCode extends ShortCodeLoader
             $product->shippingOptions = ShippingOption::fetchForProduct($product);
         }
 
-        return 'products short code';
+        $data = [
+            'products' => $products
+        ];
+
+        $template = new MustacheTemplate($this->lifeCycle, "products", $data);
+
+        return $template->export();
     }
 
     public function addScript() {
