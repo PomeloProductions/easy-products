@@ -9,7 +9,7 @@
       {
         "type" : "mustache",
         "location" : "assets/mustache"
-      },
+      }
     ],
     "ShortCode": [
       {
