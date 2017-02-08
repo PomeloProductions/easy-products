@@ -32,6 +32,7 @@ class ShortCode extends ShortCodeLoader
         }
 
         $data = [
+            'submit_button_text' => 'Checkout',
             'products' => $products
         ];
 
