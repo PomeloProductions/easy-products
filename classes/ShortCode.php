@@ -1,4 +1,7 @@
 <?php
+
+namespace EasyProducts;
+
 use WordWrap\ShortCodeLoader;
 
 /**
