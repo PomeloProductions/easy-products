@@ -1,7 +1,13 @@
 <form method="post" id="easy_products-products_list">
     <ul>
         {{#sliders}}
-            <li>
+            <li class="easy_products-product" data-cost="{{cost}}" data-weight="{{weight}}">
+
+                {{#shippingOptions}}
+                    <span class="easy_products-shipping_option" data-region_id="{{region_id}}"
+                          data-primary_rate="{{primary_rate}}" data-add_on_rate="{{add_on_rate}}"></span>
+                {{/shippingOptions}}
+
                 <img src="{{image_url}}">
                 <h1>{{name}}</h1>
                 <p>{{description}}</p>
