@@ -25,7 +25,21 @@ class Product {
             this.shippingOptions.push({
                 primary_rate: shippingDiv.dataset['primary_rate'],
                 add_on_rate: shippingDiv.dataset['add_on_rate']
-            })
+            });
         }
+
+        this.quantityInput = productContainer.querySelector('.easy_products-quantity_input');
+
+        this.quantityInput.addEventListener('change', this.quantityChanged.bind(this));
+    }
+
+    /**
+     * Called when quantity has changed in the input, and will recalculate the totals for this product
+     *
+     * @param event The event listener
+     */
+    quantityChanged (event) {
+
+        console.log('changed');
     }
 }
