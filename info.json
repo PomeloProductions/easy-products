@@ -9,6 +9,10 @@
       {
         "type" : "mustache",
         "location" : "assets/mustache"
+      },
+      {
+        "type" : "js",
+        "location" : "dist/js"
       }
     ],
     "ShortCode": [
