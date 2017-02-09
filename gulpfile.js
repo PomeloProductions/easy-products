@@ -1,0 +1,64 @@
+/**
+ * Created by bryce on 2/8/17.
+ */
+
+
+const gulp = require('gulp');
+const less = require('gulp-scss');
+const cssmin = require('gulp-cssmin');
+const watch = require('gulp-watch');
+const rename = require('gulp-rename');
+const babelify = require('babelify');
+const browserify = require('browserify');
+const v_buffer = require('vinyl-buffer');
+const v_source = require('vinyl-source-stream');
+const uglify = require('gulp-uglify');
+const sourcemaps = require('gulp-sourcemaps');
+const environments = require('gulp-environments');
+const concat = require('gulp-concat');
+
+// set evironment variables
+var development = environments.development;
+var production = environments.production;
+
+// gulp javascript task - bundle and minify es6 to es5 and create a sourcemap
+gulp.task('js', function(){
+    var bundler = browserify({
+        entries: 'assets/js/main.js',
+        debug: true
+    });
+    bundler.transform(babelify, {
+        presets: "es2015"
+    });
+
+    bundler.bundle()
+        .on("error", function(err){ console.error(err); })
+        .pipe(v_source('source.js'))
+        .pipe(v_buffer())
+        .pipe(development(sourcemaps.init({ loadMaps: true })))
+        .pipe(rename('build.min.js'))
+        .pipe(production(concat('build.min.js')))
+        .pipe(production(uglify()))
+        .pipe(development(sourcemaps.write('./')))
+        .pipe(gulp.dest('./dist/js/'));
+});
+
+// gulp less task - compile LESS documents and minify
+gulp.task('scss', function(){
+    return gulp.src('./assets/scss/style.scss')
+        .pipe(less().on('error', function(err){
+            console.log(err);
+        }))
+        .pipe(production(cssmin().on('error', function(err){
+            console.log(err);
+        })))
+        .pipe(gulp.dest('./dist/styles/'));
+});
+
+// gulp watch task - run less and js tasks
+gulp.task('watch', function () {
+    gulp.watch('./assets/scss/**/**.scss', ['scss']);
+    gulp.watch('./assets/js/**/**.js', ['js']);
+});
+
+gulp.task('default', ['scss', 'js', 'watch']);
