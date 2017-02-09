@@ -5,6 +5,7 @@ namespace EasyProducts;
 use EasyProducts\Model\Product;
 use EasyProducts\Model\Region;
 use EasyProducts\Model\ShippingOption;
+use WordWrap\Assets\Script\JavaScript;
 use WordWrap\Assets\Template\Mustache\MustacheTemplate;
 use WordWrap\ShortCodeLoader;
 
@@ -40,7 +41,13 @@ class ShortCode extends ShortCodeLoader
 
         $template = new MustacheTemplate($this->lifeCycle, "products", $data);
 
-        return $template->export();
+        $content = $template->export();
+
+        $js = new JavaScript($this->lifeCycle, 'app.min');
+
+        $content.= $js->export();
+
+        return $content;
     }
 
     public function addScript() {
