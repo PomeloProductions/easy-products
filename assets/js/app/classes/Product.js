@@ -2,7 +2,7 @@
  * Created by bryce on 2/8/17.
  */
 
-class Product {
+export class Product {
 
     /**
      * Creates a new instance of a product

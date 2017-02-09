@@ -2,7 +2,9 @@
  * Created by bryce on 2/8/17.
  */
 
-class ShoppingCart {
+import {Product} from './Product';
+
+export class ShoppingCart {
 
     /**
      * Constructor for this shopping cart instance
