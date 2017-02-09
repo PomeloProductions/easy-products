@@ -24,7 +24,7 @@ var production = environments.production;
 // gulp javascript task - bundle and minify es6 to es5 and create a sourcemap
 gulp.task('js', function(){
     var bundler = browserify({
-        entries: 'assets/js/main.js',
+        entries: 'assets/js/app/main.js',
         debug: true
     });
     bundler.transform(babelify, {
@@ -33,11 +33,30 @@ gulp.task('js', function(){
 
     bundler.bundle()
         .on("error", function(err){ console.error(err); })
-        .pipe(v_source('source.js'))
+        .pipe(v_source('main.js'))
         .pipe(v_buffer())
         .pipe(development(sourcemaps.init({ loadMaps: true })))
-        .pipe(rename('build.min.js'))
-        .pipe(production(concat('build.min.js')))
+        .pipe(rename('app.min.js'))
+        .pipe(production(concat('app.min.js')))
+        .pipe(production(uglify()))
+        .pipe(development(sourcemaps.write('./')))
+        .pipe(gulp.dest('./dist/js/'));
+
+    bundler = browserify({
+        entries: 'assets/js/admin/main.js',
+        debug: true
+    });
+    bundler.transform(babelify, {
+        presets: "es2015"
+    });
+
+    bundler.bundle()
+        .on("error", function(err){ console.error(err); })
+        .pipe(v_source('main.js'))
+        .pipe(v_buffer())
+        .pipe(development(sourcemaps.init({ loadMaps: true })))
+        .pipe(rename('admin.min.js'))
+        .pipe(production(concat('admin.min.js')))
         .pipe(production(uglify()))
         .pipe(development(sourcemaps.write('./')))
         .pipe(gulp.dest('./dist/js/'));
