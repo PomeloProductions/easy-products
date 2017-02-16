@@ -13,12 +13,14 @@ export class ShoppingCart {
      */
     constructor(productsForm) {
         this.productsForm = productsForm;
-        this.products = [];
+        let unsortedProducts = [];
 
         let productContainers = this.productsForm.getElementsByClassName('easy_products-product');
 
         for (let i = 0; i < productContainers.length; i++) {
-            this.products.push(new Product(productContainers[i]));
+            unsortedProducts.push(new Product(productContainers[i]));
         }
+
+        this.products = unsortedProducts.sort(Product.compareWeights).reverse();
     }
 }

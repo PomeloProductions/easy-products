@@ -42,4 +42,21 @@ export class Product {
 
         console.log('changed');
     }
+
+    /**
+     * Compare function for comparing weights of two products
+     *
+     * @param a Product
+     * @param b Product
+     * @returns {number}
+     */
+    static compareWeights (a, b) {
+        if (a.weight < b.weight) {
+            return -1;
+        }
+        if (a.weight > b.weight) {
+            return 1;
+        }
+        return 0;
+    }
 }
