@@ -4,6 +4,7 @@
 
 import {Product} from './Product';
 import {CookieFactory} from './CookieFactory';
+import {ShippingManager} from './ShippingManager';
 
 export class ShoppingCart {
 
@@ -44,6 +45,8 @@ export class ShoppingCart {
         }
 
         this.products = unsortedProducts.sort(Product.compareWeights).reverse();
+
+        this.shippingManager = new ShippingManager(this.productsForm, this.cookieFactory);
 
         this.calculateTotals();
     }
