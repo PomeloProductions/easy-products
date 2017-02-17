@@ -34,6 +34,8 @@ export class Product {
         }
 
         this.quantityInput = productContainer.querySelector('.easy_products-quantity_input');
+        this.totalDisplay = productContainer.querySelector('.easy_products-total_display');
+        this.productTotal = productContainer.querySelector('.easy_products-product_total');
 
         this.quantityInput.addEventListener('change', this.quantityChanged.bind(this));
     }
@@ -49,6 +51,14 @@ export class Product {
 
         if (this.quantity != this.quantityInput.value) {
             this.quantityInput.value = this.quantity;
+        }
+
+        if (this.total > 0) {
+            this.productTotal.innerHTML = this.total.toFixed(2);
+            this.totalDisplay.style.display = ''
+        }
+        else {
+            this.totalDisplay.style.display = 'none';
         }
     }
 
