@@ -25,7 +25,7 @@ export class ShoppingCart {
 
         for (let i = 0; i < productContainers.length; i++) {
 
-            let product = new Product(productContainers[i]);
+            let product = new Product(productContainers[i], this.quantityChanged.bind(this));
 
             let storedQuantity = this.productQuantities[product.id];
 
