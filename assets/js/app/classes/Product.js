@@ -34,7 +34,7 @@ export class Product {
         }
 
         this.quantityInput = productContainer.querySelector('.easy_products-quantity_input');
-        this.totalDisplay = productContainer.querySelector('.easy_products-total_display');
+        this.totalDisplay = productContainer.querySelector('.easy_products-product_total_display');
         this.productTotal = productContainer.querySelector('.easy_products-product_total');
 
         this.quantityInput.addEventListener('change', this.quantityChanged.bind(this));
