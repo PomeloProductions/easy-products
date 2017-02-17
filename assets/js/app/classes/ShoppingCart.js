@@ -49,6 +49,8 @@ export class ShoppingCart {
         this.shippingManager = new ShippingManager(this.productsForm, this.checkShippingAddress.bind(this), this.cookieFactory);
 
         this.calculateTotals();
+
+        this.submitButton = this.productsForm.querySelector('#easy_products-submit');
     }
 
     /**
@@ -58,10 +60,14 @@ export class ShoppingCart {
 
         if (this.shippingManager.checkIfShippingComplete()) {
             this.calculateTotals();
+
+            this.submitButton.disabled = false;
         }
         else {
             this.shippingDisplay.innerHTML = 'Please Enter Your Shipping Address';
             this.totalDisplay.innerHTML = 'Please Enter Your Shipping Address';
+
+            this.submitButton.disabled = true;
         }
     }
 
