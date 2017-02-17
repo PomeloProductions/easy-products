@@ -16,6 +16,11 @@ export class ShoppingCart {
         ShoppingCart.PRODUCTS_COOKIE = 'product_quantities';
 
         this.productsForm = productsForm;
+
+        this.subtotalDisplay = this.productsForm.getElementById('easy_products-subtotal');
+        this.shippingDisplay = this.productsForm.getElementById('easy_products-shipping_total');
+        this.totalDisplay = this.productsForm.getElementById('easy_products-total');
+
         this.cookieFactory = new CookieFactory('easy_products');
 
         this.productQuantities = this.cookieFactory.loadJSON(ShoppingCart.PRODUCTS_COOKIE);
