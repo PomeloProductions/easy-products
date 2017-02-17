@@ -60,8 +60,6 @@ export class ShoppingCart {
 
         if (this.shippingManager.checkIfShippingComplete()) {
             this.calculateTotals();
-
-            this.submitButton.disabled = false;
         }
         else {
             this.shippingDisplay.innerHTML = 'Please Enter Your Shipping Address';
@@ -124,6 +122,8 @@ export class ShoppingCart {
             this.total = subtotal + shippingTotal;
 
             this.totalDisplay.innerHTML = '$' + this.total.toFixed(2);
+
+            this.submitButton.disabled = false;
         }
     }
 }
