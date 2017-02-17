@@ -17,15 +17,15 @@
         {{/products}}
     </ul>
     <h4>Shipping Address</h4>
-    <input type="text" name="easy_products-name" placeholder="Enter Name" required/>
-    <input type="text" name="easy_products-address_1" placeholder="Address Line 1" required/>
-    <input type="text" name="easy_products-address_2" placeholder="Address Line 2"/>
-    <input type="text" name="easy_products-city" placeholder="City" required/>
-    <input type="text" name="easy_products-postal_code" placeholder="Postal Code" required/>
-    <input type="text" name="easy_products-state" placeholder="State" required/>
+    <input type="text" name="easy_products-name" id="easy_products-name" placeholder="Enter Name" required/>
+    <input type="text" name="easy_products-address_1" id="easy_products-address_1" placeholder="Address Line 1" required/>
+    <input type="text" name="easy_products-address_2" id="easy_products-address_2" placeholder="Address Line 2"/>
+    <input type="text" name="easy_products-city" id="easy_products-city" placeholder="City" required/>
+    <input type="text" name="easy_products-postal_code" id="easy_products-postal_code" placeholder="Postal Code" required/>
+    <input type="text" name="easy_products-state" id="easy_products-state" placeholder="State" required/>
 
     <label>Country
-        <select>
+        <select id="easy_products-country" data-blank_value="Select Country">
             <option disabled selected>Select Country</option>
             {{#regions}}
                 <option value="{{id}}">{{name}}</option>
