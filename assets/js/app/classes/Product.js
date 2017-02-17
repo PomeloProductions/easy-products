@@ -8,11 +8,15 @@ export class Product {
      * Creates a new instance of a product
      *
      * @param productContainer The container that will hold all data for this product
+     * @param quantityChangedCallback
      */
-    constructor (productContainer) {
+    constructor (productContainer, quantityChangedCallback) {
+
+        this.quantityChangedCallback = quantityChangedCallback;
 
         this.shippingOptions = [];
         this.quantity = 0;
+        this.total = 0;
 
         this.id = productContainer.dataset['id'];
         this.cost = productContainer.dataset['cost'];
@@ -41,7 +45,11 @@ export class Product {
      */
     setQuantity (quantity) {
         this.quantity = quantity;
-        this.sum = quantity * this.cost;
+        this.total = quantity * this.cost;
+
+        if (this.quantity != this.quantityInput.value) {
+            this.quantityInput.value = this.quantity;
+        }
     }
 
     /**
@@ -51,7 +59,17 @@ export class Product {
      */
     quantityChanged (event) {
 
-        console.log('changed');
+        let quantity = Number(this.quantityInput.value);
+
+        if (isNaN(quantity)) {
+            quantity = 0;
+        }
+
+        this.setQuantity(quantity);
+
+        if (typeof this.quantityChangedCallback == 'function') {
+            this.quantityChangedCallback(this);
+        }
     }
 
     /**
