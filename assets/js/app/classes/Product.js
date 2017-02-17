@@ -33,8 +33,8 @@ export class Product {
             let key = regionId ? regionId : 'default';
 
             this.shippingOptions[key] = {
-                primary_rate: shippingDiv.dataset['primary_rate'],
-                add_on_rate: shippingDiv.dataset['add_on_rate']
+                primary_rate: Number(shippingDiv.dataset['primary_rate']),
+                add_on_rate: Number(shippingDiv.dataset['add_on_rate'])
             };
         }
 
