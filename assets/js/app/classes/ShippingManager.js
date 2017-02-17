@@ -12,7 +12,7 @@ export class ShippingManager {
      * @param form
      * @param cookieFactory CookieFactory
      */
-    constructor (form, cookieFactory) {
+    constructor (form, addressChangeCallback, cookieFactory) {
 
         ShippingManager.NAME_COOKIE = "name";
         ShippingManager.ADDRESS_1_COOKIE = "address_1";
@@ -30,13 +30,13 @@ export class ShippingManager {
         let stateInput = form.querySelector("#easy_products-state");
         let countrySelect = form.querySelector("#easy_products-country");
 
-        this.nameField = new ShippingField(nameInput, cookieFactory, ShippingManager.NAME_COOKIE);
-        this.address1Field = new ShippingField(address1Input, cookieFactory, ShippingManager.ADDRESS_1_COOKIE);
-        this.address2Field = new ShippingField(address2Input, cookieFactory, ShippingManager.ADDRESS_2_COOKIE);
-        this.cityField = new ShippingField(cityInput, cookieFactory, ShippingManager.CITY_COOKIE);
-        this.postalCodeField = new ShippingField(postalCodeInput, cookieFactory, ShippingManager.POSTAL_CODE_COOKIE);
-        this.stateField = new ShippingField(stateInput, cookieFactory, ShippingManager.STATE_COOKIE);
-        this.countryField = new ShippingField(countrySelect, cookieFactory, ShippingManager.COUNTRY_COOKIE);
+        this.nameField = new ShippingField(nameInput, addressChangeCallback, cookieFactory, ShippingManager.NAME_COOKIE);
+        this.address1Field = new ShippingField(address1Input, addressChangeCallback, cookieFactory, ShippingManager.ADDRESS_1_COOKIE);
+        this.address2Field = new ShippingField(address2Input, addressChangeCallback, cookieFactory, ShippingManager.ADDRESS_2_COOKIE);
+        this.cityField = new ShippingField(cityInput, addressChangeCallback, cookieFactory, ShippingManager.CITY_COOKIE);
+        this.postalCodeField = new ShippingField(postalCodeInput, addressChangeCallback, cookieFactory, ShippingManager.POSTAL_CODE_COOKIE);
+        this.stateField = new ShippingField(stateInput, addressChangeCallback, cookieFactory, ShippingManager.STATE_COOKIE);
+        this.countryField = new ShippingField(countrySelect, addressChangeCallback, cookieFactory, ShippingManager.COUNTRY_COOKIE);
     }
 
     /**

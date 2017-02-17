@@ -46,9 +46,23 @@ export class ShoppingCart {
 
         this.products = unsortedProducts.sort(Product.compareWeights).reverse();
 
-        this.shippingManager = new ShippingManager(this.productsForm, this.cookieFactory);
+        this.shippingManager = new ShippingManager(this.productsForm, this.checkShippingAddress.bind(this), this.cookieFactory);
 
         this.calculateTotals();
+    }
+
+    /**
+     * checks to see if the shipping address has been changed
+     */
+    checkShippingAddress () {
+
+        if (this.shippingManager.checkIfShippingComplete()) {
+            this.calculateTotals();
+        }
+        else {
+            this.shippingDisplay.innerHTML = 'Please Enter Your Shipping Address';
+            this.totalDisplay.innerHTML = 'Please Enter Your Shipping Address';
+        }
     }
 
     /**

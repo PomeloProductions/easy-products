@@ -8,12 +8,14 @@ export class ShippingField {
      * Default constructor for a field
      *
      * @param field HTMLNode
+     * @param changeCallback Function
      * @param cookieFactory CookieFactory
      * @param cookieKey The key for the stored cookie
      */
-    constructor (field, cookieFactory, cookieKey) {
+    constructor (field, changeCallback, cookieFactory, cookieKey) {
 
         this.field = field;
+        this.changeCallback = changeCallback;
         this.cookieFactory = cookieFactory;
         this.cookieKey = cookieKey;
 
@@ -58,6 +60,7 @@ export class ShippingField {
 
         if (this.valueEntered) {
             this.cookieFactory.saveCookie(this.cookieKey, this.field.value);
+            this.changeCallback();
         }
     }
 
