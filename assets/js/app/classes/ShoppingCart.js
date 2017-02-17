@@ -3,6 +3,7 @@
  */
 
 import {Product} from './Product';
+import {CookieFactory} from './CookieFactory';
 
 export class ShoppingCart {
 
@@ -12,13 +13,29 @@ export class ShoppingCart {
      * @param productsForm the dom form
      */
     constructor(productsForm) {
+        ShoppingCart.PRODUCTS_COOKIE = 'product_quantities';
+
         this.productsForm = productsForm;
+        this.cookieFactory = new CookieFactory('easy_products');
+
+        this.productQuantities = this.cookieFactory.loadJSON(ShoppingCart.PRODUCTS_COOKIE);
         let unsortedProducts = [];
 
         let productContainers = this.productsForm.getElementsByClassName('easy_products-product');
 
         for (let i = 0; i < productContainers.length; i++) {
-            unsortedProducts.push(new Product(productContainers[i]));
+
+            let product = new Product(productContainers[i]);
+
+            let storedQuantity = this.productQuantities[product.id];
+
+            if (typeof storedQuantity != 'number') {
+                storedQuantity = 0;
+            }
+
+            product.setQuantity(storedQuantity);
+
+            unsortedProducts.push(product);
         }
 
         this.products = unsortedProducts.sort(Product.compareWeights).reverse();
