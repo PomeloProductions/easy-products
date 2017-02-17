@@ -11,11 +11,12 @@ export class Product {
      */
     constructor (productContainer) {
 
+        this.shippingOptions = [];
+        this.quantity = 0;
+
         this.id = productContainer.dataset['id'];
         this.cost = productContainer.dataset['cost'];
         this.weight = productContainer.dataset['weight'];
-
-        this.shippingOptions = [];
 
         let shippingDivs = productContainer.getElementsByClassName('easy_products-shipping_option');
 
@@ -31,6 +32,16 @@ export class Product {
         this.quantityInput = productContainer.querySelector('.easy_products-quantity_input');
 
         this.quantityInput.addEventListener('change', this.quantityChanged.bind(this));
+    }
+
+    /**
+     * Sets the quantity and updates the cost variables
+     *
+     * @param quantity
+     */
+    setQuantity (quantity) {
+        this.quantity = quantity;
+        this.sum = quantity * this.cost;
     }
 
     /**
