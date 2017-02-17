@@ -10,7 +10,7 @@
 
                 <img src="{{image_url}}">
                 <h3>{{name}} <span>${{cost}}</span></h3>
-                <input class="easy_products-quantity_input" placeholder="Quantity Desired" name="quantity[{{id}}]" type="number"/>
+                <input class="easy_products-quantity_input" min="0" placeholder="Quantity Desired" name="quantity[{{id}}]" type="number"/>
                 <p>{{description}}</p>
             </li>
         {{/products}}
