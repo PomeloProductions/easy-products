@@ -18,6 +18,7 @@ export class ShippingField {
         this.cookieKey = cookieKey;
 
         this.valueEntered = false;
+        this.required = this.field.hasAttribute('required');
 
         this.blankValue = this.field.dataset['blank_value'];
 
@@ -67,10 +68,6 @@ export class ShippingField {
      */
     checkIfComplete () {
 
-        if (this.field.required) {
-            return this.valueEntered;
-        }
-
-        return true;
+        return this.required ? this.valueEntered : true;
     }
 }
