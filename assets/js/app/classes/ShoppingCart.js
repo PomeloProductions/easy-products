@@ -12,7 +12,7 @@ export class ShoppingCart {
      *
      * @param productsForm the dom form
      */
-    constructor(productsForm) {
+    constructor (productsForm) {
         ShoppingCart.PRODUCTS_COOKIE = 'product_quantities';
 
         this.productsForm = productsForm;
@@ -39,5 +39,15 @@ export class ShoppingCart {
         }
 
         this.products = unsortedProducts.sort(Product.compareWeights).reverse();
+    }
+
+    /**
+     * Called whenever a quantity has changed
+     *
+     * @param product Product
+     */
+    quantityChanged (product) {
+        this.productQuantities[product.id] = product.quantity;
+        this.cookieFactory.saveJSON(ShoppingCart.PRODUCTS_COOKIE, this.productQuantities);
     }
 }
