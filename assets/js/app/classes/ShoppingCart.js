@@ -73,10 +73,10 @@ export class ShoppingCart {
             subtotal+= this.products[i].total;
         }
 
-        if (this.shippingManager.checkIfShippingComplete()) {
-            
-        }
-
         this.subtotalDisplay.innerHTML = '$' + subtotal.toFixed(2);
+
+        if (this.shippingManager.checkIfShippingComplete()) {
+
+        }
     }
 }
