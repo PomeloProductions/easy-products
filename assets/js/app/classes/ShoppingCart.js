@@ -17,9 +17,9 @@ export class ShoppingCart {
 
         this.productsForm = productsForm;
 
-        this.subtotalDisplay = this.productsForm.getElementById('easy_products-subtotal');
-        this.shippingDisplay = this.productsForm.getElementById('easy_products-shipping_total');
-        this.totalDisplay = this.productsForm.getElementById('easy_products-total');
+        this.subtotalDisplay = this.productsForm.querySelector('#easy_products-subtotal');
+        this.shippingDisplay = this.productsForm.querySelector('#easy_products-shipping_total');
+        this.totalDisplay = this.productsForm.querySelector('#easy_products-total');
 
         this.cookieFactory = new CookieFactory('easy_products');
 
@@ -44,6 +44,8 @@ export class ShoppingCart {
         }
 
         this.products = unsortedProducts.sort(Product.compareWeights).reverse();
+
+        this.calculateTotals();
     }
 
     /**
@@ -54,5 +56,20 @@ export class ShoppingCart {
     quantityChanged (product) {
         this.productQuantities[product.id] = product.quantity;
         this.cookieFactory.saveJSON(ShoppingCart.PRODUCTS_COOKIE, this.productQuantities);
+
+        this.calculateTotals();
+    }
+
+    /**
+     * Recalculates all totals
+     */
+    calculateTotals () {
+
+        let subtotal = 0;
+        for (let i = 0; i < this.products.length; i++) {
+            subtotal+= this.products[i].total;
+        }
+
+        this.subtotalDisplay.innerHTML = '$' + subtotal.toFixed(2);
     }
 }
