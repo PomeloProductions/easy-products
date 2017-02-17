@@ -14,7 +14,7 @@ export class Product {
 
         this.quantityChangedCallback = quantityChangedCallback;
 
-        this.shippingOptions = [];
+        this.shippingOptions = {};
         this.quantity = 0;
         this.total = 0;
 
@@ -27,10 +27,15 @@ export class Product {
         for (let i = 0; i < shippingDivs.length; i++) {
 
             let shippingDiv = shippingDivs[i];
-            this.shippingOptions.push({
+
+            let regionId = shippingDiv.dataset['region_id'];
+
+            let key = regionId ? regionId : 'default';
+
+            this.shippingOptions[key] = {
                 primary_rate: shippingDiv.dataset['primary_rate'],
                 add_on_rate: shippingDiv.dataset['add_on_rate']
-            });
+            };
         }
 
         this.quantityInput = productContainer.querySelector('.easy_products-quantity_input');
@@ -64,10 +69,8 @@ export class Product {
 
     /**
      * Called when quantity has changed in the input, and will recalculate the totals for this product
-     *
-     * @param event The event listener
      */
-    quantityChanged (event) {
+    quantityChanged () {
 
         let quantity = Number(this.quantityInput.value);
 
@@ -80,6 +83,18 @@ export class Product {
         if (typeof this.quantityChangedCallback == 'function') {
             this.quantityChangedCallback(this);
         }
+    }
+
+    /**
+     * retrieves the shipping rate for the specified region
+     *
+     * @param regionId
+     * @returns {*}
+     */
+    retrieveShippingRates (regionId) {
+        let rates = this.shippingOptions[regionId];
+
+        return rates ? rates : this.shippingOptions['default'];
     }
 
     /**

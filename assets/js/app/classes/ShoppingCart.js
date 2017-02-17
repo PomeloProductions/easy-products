@@ -91,6 +91,33 @@ export class ShoppingCart {
 
         if (this.shippingManager.checkIfShippingComplete()) {
 
+            let shippingTotal = 0;
+            let regionId = this.shippingManager.getRegionId();
+
+            for (let i = 0; i < this.products.length; i++) {
+                let product = this.products[i];
+
+                if (product.quantity) {
+
+                    let shippingRates = product.retrieveShippingRates(regionId);
+
+                    let addOnQuantity = product.quantity;
+
+                    if (shippingTotal == 0) {
+                        shippingTotal+= shippingRates.primary_rate;
+                        addOnQuantity--;
+                    }
+                    if (addOnQuantity) {
+                        shippingTotal+= shippingRates.add_on_rate * addOnQuantity;
+                    }
+                }
+            }
+
+            this.shippingDisplay.innerHTML = '$' + shippingTotal.toFixed(2);
+
+            this.total = subtotal + shippingTotal;
+
+            this.totalDisplay.innerHTML = '$' + this.total.toFixed(2);
         }
     }
 }

@@ -10,6 +10,7 @@ export class ShippingManager {
      * Manages the current state of the shipping options
      *
      * @param form
+     * @param addressChangeCallback function
      * @param cookieFactory CookieFactory
      */
     constructor (form, addressChangeCallback, cookieFactory) {
@@ -50,5 +51,14 @@ export class ShippingManager {
                 && this.address2Field.checkIfComplete() && this.cityField.checkIfComplete()
                 && this.postalCodeField.checkIfComplete() && this.stateField.checkIfComplete()
                 && this.countryField.checkIfComplete();
+    }
+
+    /**
+     * Gets the selected region id or undefined if none has been found
+     *
+     * @returns Boolean|undefined
+     */
+    getRegionId () {
+        return this.countryField.checkIfComplete() ? this.countryField.field.value : undefined;
     }
 }
