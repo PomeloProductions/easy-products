@@ -21,7 +21,14 @@ export class ShippingField {
 
         this.blankValue = this.field.dataset['blank_value'];
 
-        this.checkInputValue();
+        let storedValue = this.cookieFactory.loadCookie(this.cookieKey);
+
+        if (storedValue) {
+            this.field.value = storedValue;
+            this.checkInputValue();
+        }
+
+        this.field.addEventListener('change', this.verifyInputValue.bind(this));
     }
 
     /**
@@ -39,6 +46,17 @@ export class ShippingField {
             else {
                 this.valueEntered = true;
             }
+        }
+    }
+
+    /**
+     * double checks input value when it changes to verify a value was entered properly
+     */
+    verifyInputValue () {
+        this.checkInputValue();
+
+        if (this.valueEntered) {
+            this.cookieFactory.saveCookie(this.cookieKey, this.field.value);
         }
     }
 
