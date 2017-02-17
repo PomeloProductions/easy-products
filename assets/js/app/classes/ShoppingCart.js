@@ -22,6 +22,8 @@ export class ShoppingCart {
         this.shippingDisplay = this.productsForm.querySelector('#easy_products-shipping_total');
         this.totalDisplay = this.productsForm.querySelector('#easy_products-total');
 
+        this.submitButton = this.productsForm.querySelector('#easy_products-submit');
+
         this.cookieFactory = new CookieFactory('easy_products');
 
         this.productQuantities = this.cookieFactory.loadJSON(ShoppingCart.PRODUCTS_COOKIE);
@@ -49,8 +51,6 @@ export class ShoppingCart {
         this.shippingManager = new ShippingManager(this.productsForm, this.checkShippingAddress.bind(this), this.cookieFactory);
 
         this.calculateTotals();
-
-        this.submitButton = this.productsForm.querySelector('#easy_products-submit');
     }
 
     /**
