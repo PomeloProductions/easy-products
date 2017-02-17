@@ -16,5 +16,43 @@ export class ShippingField {
         this.field = field;
         this.cookieFactory = cookieFactory;
         this.cookieKey = cookieKey;
+
+        this.valueEntered = false;
+
+        this.blankValue = this.field.dataset['blank_value'];
+
+        this.checkInputValue();
+    }
+
+    /**
+     * Determines if the user has entered a proper value
+     */
+    checkInputValue () {
+
+        this.valueEntered = false;
+
+        if (this.field.value) {
+
+            if (this.blankValue) {
+                this.valueEntered = this.blankValue != this.field.value;
+            }
+            else {
+                this.valueEntered = true;
+            }
+        }
+    }
+
+    /**
+     * Checks whether or not this field is ready for submission
+     *
+     * @returns Boolean
+     */
+    checkIfComplete () {
+
+        if (this.field.required) {
+            return this.valueEntered;
+        }
+
+        return true;
     }
 }

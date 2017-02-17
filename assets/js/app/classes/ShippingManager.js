@@ -38,4 +38,17 @@ export class ShippingManager {
         this.stateField = new ShippingField(stateInput, cookieFactory, ShippingManager.STATE_COOKIE);
         this.countryField = new ShippingField(countrySelect, cookieFactory, ShippingManager.COUNTRY_COOKIE);
     }
+
+    /**
+     * Checks all fields to see if the shipping is ready to go
+     *
+     * @returns {Boolean}
+     */
+    checkIfShippingComplete() {
+
+        return this.nameField.checkIfComplete() && this.address1Field.checkIfComplete()
+                && this.address2Field.checkIfComplete() && this.cityField.checkIfComplete()
+                && this.postalCodeField.checkIfComplete() && this.stateField.checkIfComplete()
+                && this.countryField.checkIfComplete();
+    }
 }

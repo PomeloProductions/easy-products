@@ -25,7 +25,7 @@
     <input type="text" name="easy_products-state" id="easy_products-state" placeholder="State" required/>
 
     <label>Country
-        <select id="easy_products-country" data-blank_value="Select Country">
+        <select id="easy_products-country" required data-blank_value="Select Country">
             <option disabled selected>Select Country</option>
             {{#regions}}
                 <option value="{{id}}">{{name}}</option>
