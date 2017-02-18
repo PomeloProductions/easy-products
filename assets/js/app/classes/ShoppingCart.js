@@ -134,6 +134,10 @@ export class ShoppingCart {
             this.totalDisplay.innerHTML = '$' + this.total.toFixed(2);
 
             this.submitButton.disabled = false;
+
+            if (this.completeCallback) {
+                this.completeCallback(this.total);
+            }
         }
     }
 }
