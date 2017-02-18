@@ -18,6 +18,16 @@ export class ShoppingCart {
 
         this.productsForm = productsForm;
 
+        let completeCallbackName = this.productsForm.dataset['complete_callback'];
+
+        if (completeCallbackName) {
+            let completeCallback = eval(completeCallbackName);
+
+            if (typeof completeCallback == 'function') {
+                this.completeCallback = completeCallback;
+            }
+        }
+
         this.subtotalDisplay = this.productsForm.querySelector('#easy_products-subtotal');
         this.shippingDisplay = this.productsForm.querySelector('#easy_products-shipping_total');
         this.totalDisplay = this.productsForm.querySelector('#easy_products-total');
