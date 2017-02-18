@@ -35,3 +35,4 @@ require ('vendor/autoload.php');
 
 include_once(__DIR__ . '/../word-wrap/word-wrap.php');
 WordWrap::init(basename(__DIR__));
+wp_enqueue_style( 'products', '/wp-content/plugins/easy-products/dist/styles/style.css' );
