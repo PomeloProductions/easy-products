@@ -18,16 +18,6 @@ export class ShoppingCart {
 
         this.productsForm = productsForm;
 
-        let completeCallbackName = this.productsForm.dataset['complete_callback'];
-
-        if (completeCallbackName) {
-            let completeCallback = eval(completeCallbackName);
-
-            if (typeof completeCallback == 'function') {
-                this.completeCallback = completeCallback;
-            }
-        }
-
         this.subtotalDisplay = this.productsForm.querySelector('#easy_products-subtotal');
         this.shippingDisplay = this.productsForm.querySelector('#easy_products-shipping_total');
         this.totalDisplay = this.productsForm.querySelector('#easy_products-total');
@@ -61,6 +51,40 @@ export class ShoppingCart {
         this.shippingManager = new ShippingManager(this.productsForm, this.checkShippingAddress.bind(this), this.cookieFactory);
 
         this.calculateTotals();
+
+        document.addEventListener('DOMContentLoaded', this.setupCompleteCallback.bind(this));
+
+    }
+
+    /**
+     * Sets up the complete callback
+     */
+    setupCompleteCallback () {
+
+        let completeCallbackName = this.productsForm.dataset['complete_callback'];
+
+        if (completeCallbackName) {
+            let completeCallback = eval(completeCallbackName);
+
+            if (typeof completeCallback == 'function') {
+                this.completeCallback = completeCallback;
+            }
+        }
+
+        this.productsForm.addEventListener('submit', this.submitForm.bind(this));
+    }
+
+    /**
+     * Stops the submission if a complete callback is set
+     *
+     * @param event
+     */
+    submitForm (event) {
+        if (this.completeCallback) {
+            event.preventDefault();
+
+            this.completeCallback(this.total);
+        }
     }
 
     /**
@@ -134,10 +158,6 @@ export class ShoppingCart {
             this.totalDisplay.innerHTML = '$' + this.total.toFixed(2);
 
             this.submitButton.disabled = false;
-
-            if (this.completeCallback) {
-                this.completeCallback(this.total);
-            }
         }
     }
 }
