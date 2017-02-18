@@ -64,13 +64,14 @@ gulp.task('js', function(){
 
 // gulp less task - compile LESS documents and minify
 gulp.task('scss', function(){
-    return gulp.src('./assets/scss/style.scss')
+    return gulp.src(['./assets/scss/product.scss'])
         .pipe(less().on('error', function(err){
             console.log(err);
         }))
         .pipe(production(cssmin().on('error', function(err){
             console.log(err);
         })))
+        .pipe(concat('style.css'))
         .pipe(gulp.dest('./dist/styles/'));
 });
 
