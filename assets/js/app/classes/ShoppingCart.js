@@ -52,22 +52,22 @@ export class ShoppingCart {
 
         this.calculateTotals();
 
-        document.addEventListener('DOMContentLoaded', this.setupCompleteCallback.bind(this));
+        document.addEventListener('DOMContentLoaded', this.setupSubmitCallback.bind(this));
 
     }
 
     /**
      * Sets up the complete callback
      */
-    setupCompleteCallback () {
+    setupSubmitCallback () {
 
-        let completeCallbackName = this.productsForm.dataset['complete_callback'];
+        let submitCallbackName = this.productsForm.dataset['submit_callback'];
 
-        if (completeCallbackName) {
-            let completeCallback = eval(completeCallbackName);
+        if (submitCallbackName) {
+            let submitCallback = eval(submitCallbackName);
 
-            if (typeof completeCallback == 'function') {
-                this.completeCallback = completeCallback;
+            if (typeof submitCallback == 'function') {
+                this.submitCallback = submitCallback;
             }
         }
 
@@ -80,10 +80,10 @@ export class ShoppingCart {
      * @param event
      */
     submitForm (event) {
-        if (this.completeCallback) {
+        if (this.submitCallback) {
             event.preventDefault();
 
-            this.completeCallback(this.total);
+            this.submitCallback(this.total);
         }
     }
 

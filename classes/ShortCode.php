@@ -27,7 +27,7 @@ class ShortCode extends ShortCodeLoader
      */
     public function onShortcode($atts) {
 
-        $completeCallback = $atts['complete_callback'] ?? null;
+        $submitCallback = $atts['submit_callback'] ?? null;
 
         $products = Product::fetchAllActive();
 
@@ -41,8 +41,8 @@ class ShortCode extends ShortCodeLoader
             'products' => $products
         ];
 
-        if ($completeCallback) {
-            $data['complete_callback'] = $completeCallback;
+        if ($submitCallback) {
+            $data['submit_callback'] = $submitCallback;
         }
 
         $template = new MustacheTemplate($this->lifeCycle, "products", $data);
