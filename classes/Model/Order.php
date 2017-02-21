@@ -65,6 +65,14 @@ class Order extends BaseModel
     public $shipped = false;
 
     /**
+     * Marks the object as having been shipped
+     */
+    public function shipped () {
+        $this->shipped = true;
+        $this->save();
+    }
+
+    /**
      * Overwrite this in your concrete class. Returns the table name used to
      * store models of this class.
      *
@@ -101,5 +109,49 @@ class Order extends BaseModel
             'reference_number' => 'VARCHAR(255)',
             'shipped' => 'TINYINT(1) DEFAULT 0'
         ];
+    }
+
+    /**
+     * Creates a new order object
+     *
+     * @param String $name
+     * @param String $addressLine1
+     * @param String $addressLine2
+     * @param String $postalCode
+     * @param String $state
+     * @param Region $region
+     * @param float $amount
+     * @param String $referenceNumber
+     * @return Order The new order object
+     */
+    public static function create (String $name, String $addressLine1, String $addressLine2,
+                                    String $postalCode, String $state, Region $region, float $amount,
+                                    String $referenceNumber) : Order{
+
+        $order = new Order();
+
+        $order->name = $name;
+        $order->address_line_1 = $addressLine1;
+        $order->address_line_2 = $addressLine2;
+        $order->postal_code = $postalCode;
+        $order->state = $state;
+        $order->region_id = $region->id;
+        $order->amount = $amount;
+        $order->reference_number = $referenceNumber;
+
+        $order->save();
+
+        return $order;
+    }
+
+    /**
+     * Fetches all orders that have been shipped or not shipped
+     *
+     * @param $shipped
+     * @return Order[]
+     * @throws \Exception
+     */
+    public static function fetchShipped ($shipped = true) {
+        return self::fetchWhere(['shipped' => $shipped ? '1' : '0']);
     }
 }
