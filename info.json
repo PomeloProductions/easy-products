@@ -34,6 +34,9 @@
       },
       {
         "className": "Model\\ShippingOption"
+      },
+      {
+        "className": "Model\\Order"
       }
     ]
   }

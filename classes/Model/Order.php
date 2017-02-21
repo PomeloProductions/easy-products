@@ -91,14 +91,14 @@ class Order extends BaseModel
     public static function getFields() {
 
         return [
-            'name' => 'VARCHAR(255) ALLOW NULL',
-            'address_line_1' => 'VARCHAR(255) ALLOW NULL',
-            'address_line_2' => 'VARCHAR(255) ALLOW NULL',
-            'postal_code' => 'VARCHAR(255) ALLOW NULL',
-            'state' => 'VARCHAR(255) ALLOW NULL',
-            'region_id' => 'INTEGER(11) ALLOW NULL',
-            'amount' => 'FLOAT(11, 2) ALLOW NULL',
-            'reference_number' => 'VARCHAR(255) ALLOW NULL',
+            'name' => 'VARCHAR(255)',
+            'address_line_1' => 'VARCHAR(255)',
+            'address_line_2' => 'VARCHAR(255)',
+            'postal_code' => 'VARCHAR(255)',
+            'state' => 'VARCHAR(255)',
+            'region_id' => 'INTEGER(11)',
+            'amount' => 'FLOAT(11, 2)',
+            'reference_number' => 'VARCHAR(255)',
             'shipped' => 'TINYINT(1) DEFAULT 0'
         ];
     }
