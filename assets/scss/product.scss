@@ -1,0 +1,108 @@
+  #easy_products-products_list{
+
+    ul {
+      list-style: none;
+
+      .easy_products-product {
+        text-align: center;
+        position: relative;
+        margin-bottom: 25px;
+
+        h3 {
+          display: block;
+          margin: 0 0 2.12vw 0 !important;
+        }
+        h3:last-child{
+          display: inherit;
+        }
+
+        .easy_products-quantity_input {
+          margin: 0 auto 3.75vw 0;
+          clear:both;
+          font-size: 3.75vw;
+        }
+
+        img {
+          max-width: 50%;
+          float: left;
+          margin: 0 10px 7px 0;
+        }
+
+        p {
+          text-align: left;
+          margin-bottom: 10px;
+        }
+      }
+      
+      @media screen and (min-width: 426px) {
+        .easy_products-quantity_input{
+          font-size: 16px;
+        }
+      }
+      @media screen and (min-width: 784px){
+        .easy_products-product {
+          text-align: center;
+          position: relative;
+          margin-bottom: 50px;
+
+          h3 {
+            line-height: 30px;
+            margin: 0 0 10px 0 !important;
+          }
+
+          h3:last-child {
+            margin: 0 0 20px 0 !important;
+          }
+
+          .easy_products-quantity_input {
+            margin: 0 auto 25px 0;
+            font-size: 16px;
+          }
+
+          img {
+            max-width: 50%;
+            float: left;
+            margin: 0 20px 15px 0;
+          }
+
+          p {
+            text-align: left;
+            margin-bottom: 5px;
+          }
+        }
+      }
+
+      .easy_products-product:last-child {
+        margin: 0 0 40px 0;
+      }
+    }
+
+    #easy_products-shipping_address{
+      //padding-left:40px;
+      margin: 40px;
+
+      h4{
+        text-align: center;
+      }
+
+      #easy_products-name{
+        margin: 10px 0 20px 0;
+      }
+      .shipping_address {
+        width: 90%;
+        margin: 0 0 20px 0;
+      }
+
+      #easy_products-address_1 {
+        margin: 10px 0 10px 0;
+      }
+
+      #easy_products-country{
+        margin: 0 0 20px 10px;
+      }
+
+      #easy_products-postal_code{
+        width: 50%;
+      }
+    }
+  }
