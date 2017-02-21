@@ -37,6 +37,9 @@
       },
       {
         "className": "Model\\Order"
+      },
+      {
+        "className": "Model\\OrderProduct"
       }
     ]
   }
