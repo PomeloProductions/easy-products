@@ -6,6 +6,7 @@ use EasyProducts\Model\Product;
 use EasyProducts\Model\Region;
 use EasyProducts\Model\ShippingOption;
 use WordWrap\Assets\Script\JavaScript;
+use WordWrap\Assets\StyleSheet\CSS;
 use WordWrap\Assets\Template\Mustache\MustacheTemplate;
 use WordWrap\ShortCodeLoader;
 
@@ -48,6 +49,10 @@ class ShortCode extends ShortCodeLoader
         $template = new MustacheTemplate($this->lifeCycle, "products", $data);
 
         $content = $template->export();
+
+        $css = new CSS($this->lifeCycle, 'style');
+
+        $content.= $css->export();
 
         $js = new JavaScript($this->lifeCycle, 'app.min');
 

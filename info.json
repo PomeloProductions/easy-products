@@ -13,6 +13,10 @@
       {
         "type" : "js",
         "location" : "dist/js"
+      },
+      {
+        "type" : "css",
+        "location" : "dist/styles"
       }
     ],
     "ShortCode": [
