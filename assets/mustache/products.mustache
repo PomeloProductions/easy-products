@@ -9,11 +9,19 @@
                 {{/shippingOptions}}
 
                 <h3>{{name}} </h3>
-                <h3><span>${{cost}}</span></h3>
-                <img src="{{image_url}}">
-                <p>{{description}}</p>
-                <input class="easy_products-quantity_input" min="0" placeholder="Quantity Desired" name="quantity[{{id}}]" type="number"/>
-                <p class="easy_products-product_total_display" style="display: none">Book Total: $<span class="easy_products-product_total"></span></p>
+                <h3>${{cost}}</h3>
+
+                <div class="easy_products-product_details">
+
+                    <img class="easy_products-product_image" src="{{image_url}}">
+
+                    <div class="easy_products-product_description">
+                        <p>{{description}}</p>
+                        <input class="easy_products-quantity_input" min="0" placeholder="Quantity Desired" name="quantity[{{id}}]" type="number"/>
+                        <p class="easy_products-product_total_display" style="display: none">Book Total: $<span class="easy_products-product_total"></span></p>
+                    </div>
+
+                </div>
             </li>
         {{/products}}
     </ul>
