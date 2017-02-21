@@ -61,4 +61,37 @@ class OrderProduct extends BaseModel
             'quantity' => 'INTEGER(11) NOT NULL'
         ];
     }
+
+    /**
+     * Creates a brand new order product model
+     *
+     * @param Order $order
+     * @param Product $product
+     * @param int $quantity
+     * @return OrderProduct
+     */
+    public static function create (Order $order, Product $product, int $quantity) : OrderProduct {
+
+        $orderProduct = new OrderProduct();
+
+        $orderProduct->order_id = $order->id;
+        $orderProduct->product_id = $product->id;
+        $orderProduct->quantity = $quantity;
+
+        $orderProduct->save();
+
+        return $orderProduct;
+    }
+
+    /**
+     * Fetches all order products associated with an order
+     *
+     * @param Order $order
+     * @return OrderProduct[]
+     * @throws \Exception
+     */
+    public static function fetchForOrder (Order $order) {
+
+        return static::fetchWhere(['order_id' => $order->id]);
+    }
 }
