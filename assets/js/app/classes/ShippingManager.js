@@ -54,6 +54,28 @@ export class ShippingManager {
     }
 
     /**
+     * Bundles the entire address component into a JSON
+     *
+     * @returns {{name: *, addressLine1: *, addressLine2: *, city: *, postalCode: *, country: {id: *, name: *}}}
+     */
+    bundleAddress () {
+
+        let selectedOption = this.countryField.field.options[this.countryField.field.selectedIndex];
+
+        return {
+            name: this.nameField.field.value,
+            addressLine1: this.address1Field.field.value,
+            addressLine2: this.address2Field.field.value,
+            city: this.cityField.field.value,
+            postalCode: this.postalCodeField.field.value,
+            country: {
+                id: selectedOption.value,
+                name: selectedOption.text
+            }
+        }
+    }
+
+    /**
      * Gets the selected region id or undefined if none has been found
      *
      * @returns Boolean|undefined
