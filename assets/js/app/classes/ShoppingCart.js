@@ -52,7 +52,12 @@ export class ShoppingCart {
 
         this.calculateTotals();
 
-        document.addEventListener('DOMContentLoaded', this.setupSubmitCallback.bind(this));
+        if (document.readyState === "complete" || document.readyState === "loaded") {
+            this.setupSubmitCallback();
+        }
+        else {
+            document.addEventListener('DOMContentLoaded', this.setupSubmitCallback.bind(this));
+        }
 
     }
 
