@@ -88,7 +88,21 @@ export class ShoppingCart {
         if (this.submitCallback) {
             event.preventDefault();
 
-            this.submitCallback(this.total);
+            let productData = [];
+
+            for (let i = 0; i < this.products.length; i++) {
+
+                let product = this.products[i];
+
+                if (product.quantity) {
+                    productData.push({
+                        id: product.id,
+                        quantity: product.quantity
+                    });
+                }
+            }
+
+            this.submitCallback(this.total, productData, this.shippingManager.bundleAddress());
         }
     }
 
