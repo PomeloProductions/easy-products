@@ -68,6 +68,7 @@ export class ShippingManager {
             addressLine2: this.address2Field.field.value,
             city: this.cityField.field.value,
             postalCode: this.postalCodeField.field.value,
+            state: this.stateField.field.value,
             country: {
                 id: selectedOption.value,
                 name: selectedOption.text
