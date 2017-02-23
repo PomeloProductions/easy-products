@@ -64,7 +64,7 @@ gulp.task('js', function(){
 
 // gulp less task - compile LESS documents and minify
 gulp.task('scss', function(){
-    return gulp.src(['./assets/scss/product.scss'])
+    return gulp.src(['./assets/scss/app.scss'])
         .pipe(less().on('error', function(err){
             console.log(err);
         }))
