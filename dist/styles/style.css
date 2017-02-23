@@ -1,1 +1,32 @@
-#easy_products-products_list ul{list-style:none;padding:0}#easy_products-products_list ul .easy_products-product_details{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-moz-flex-direction:column;-ms-flex-direction:column;-webkit-flex-direction:column;flex-direction:column;-moz-justify-content:space-between;-ms-justify-content:space-between;-webkit-justify-content:space-between;justify-content:space-between}@media screen and (min-width:784px){#easy_products-products_list ul .easy_products-product_details{-moz-flex-direction:row;-ms-flex-direction:row;-webkit-flex-direction:row;flex-direction:row;-moz-align-items:flex-start;-ms-align-items:flex-start;-webkit-align-items:flex-start;align-items:flex-start}#easy_products-products_list ul .easy_products-product_details .easy_products-product_description,#easy_products-products_list ul .easy_products-product_details .easy_products-product_image{width:48%}}
+#easy_products-products_list ul {
+  list-style: none;
+  padding: 0; }
+  #easy_products-products_list ul .easy_products-product_details {
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -webkit-justify-content: space-between;
+    justify-content: space-between; }
+    @media screen and (min-width: 784px) {
+      #easy_products-products_list ul .easy_products-product_details {
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -moz-align-items: flex-start;
+        -ms-align-items: flex-start;
+        -webkit-align-items: flex-start;
+        align-items: flex-start; }
+        #easy_products-products_list ul .easy_products-product_details .easy_products-product_image,
+        #easy_products-products_list ul .easy_products-product_details .easy_products-product_description {
+          width: 48%; } }
