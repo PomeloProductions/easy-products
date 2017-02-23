@@ -102,7 +102,7 @@ export class ShoppingCart {
                 }
             }
 
-            this.submitCallback(this.total, productData, this.shippingManager.bundleAddress());
+            this.submitCallback(this.productsForm, this.total, productData, this.shippingManager.bundleAddress());
         }
     }
 
