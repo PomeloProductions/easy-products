@@ -44,6 +44,7 @@
   animation: load 1.8s infinite ease-in-out;
 }
 .loader {
+  display: none;
   color: #ffffff;
   font-size: 10px;
   margin: 80px auto;
@@ -54,6 +55,10 @@
   transform: translateZ(0);
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
+
+  &.show {
+    display: inline-block;
+  }
 
   &:before,
   &:after {
