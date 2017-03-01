@@ -63,8 +63,8 @@ gulp.task('js', function(){
 });
 
 // gulp less task - compile LESS documents and minify
-gulp.task('scss', function(){
-    return gulp.src(['./assets/scss/app.scss'])
+gulp.task('app-scss', function(){
+    return gulp.src(['./assets/scss/app/app.scss'])
         .pipe(less().on('error', function(err){
             console.log(err);
         }))
@@ -75,10 +75,24 @@ gulp.task('scss', function(){
         .pipe(gulp.dest('./dist/styles/'));
 });
 
+// gulp less task - compile LESS documents and minify
+gulp.task('admin-scss', function(){
+    return gulp.src(['./assets/scss/admin/admin.scss'])
+        .pipe(less().on('error', function(err){
+            console.log(err);
+        }))
+        .pipe(production(cssmin().on('error', function(err){
+            console.log(err);
+        })))
+        .pipe(concat('admin.css'))
+        .pipe(gulp.dest('./dist/styles/'));
+});
+
 // gulp watch task - run less and js tasks
 gulp.task('watch', function () {
-    gulp.watch('./assets/scss/**/**.scss', ['scss']);
+    gulp.watch('./assets/scss/app/**/**.scss', ['app-scss']);
+    gulp.watch('./assets/scss/admin/**/**.scss', ['admin-scss']);
     gulp.watch('./assets/js/**/**.js', ['js']);
 });
 
-gulp.task('default', ['scss', 'js', 'watch']);
+gulp.task('default', ['app-scss', 'admin-scss', 'js', 'watch']);
