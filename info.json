@@ -61,7 +61,7 @@
           "Task" : [
             {
               "name" : "View Orders",
-              "className" : "\\Admin\\Orders\\View",
+              "className" : "\\Admin\\Orders\\ViewAll",
               "default" : true
             },
             {
