@@ -41,6 +41,37 @@
       {
         "className": "Model\\OrderProduct"
       }
-    ]
+    ],
+    "Admin" : {
+      "RequiredAssets" : [
+        {
+          "type" : "css",
+          "name" : "admin.min"
+        }, {
+          "type" : "js",
+          "name" : "admin.min"
+        }
+      ],
+      "Page" : [
+        {
+          "name" : "Easy Products",
+          "icon" : "dashicons-cart",
+          "capability" : "manage_options",
+          "position" : 10,
+          "Task" : [
+            {
+              "name" : "View Orders",
+              "className" : "\\Admin\\Orders\\View",
+              "default" : true
+            },
+            {
+              "name" : "Edit Order",
+              "className" : "\\Admin\\Orders\\Edit",
+              "actions" : ["edit"]
+            }
+          ]
+        }
+      ]
+    }
   }
 }
