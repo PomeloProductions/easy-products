@@ -92,6 +92,6 @@ class OrderProduct extends BaseModel
      */
     public static function fetchForOrder (Order $order) {
 
-        return static::fetchWhere(['order_id' => $order->id]);
+        return static::fetchWhere(['order_id = ' . $order->id]);
     }
 }

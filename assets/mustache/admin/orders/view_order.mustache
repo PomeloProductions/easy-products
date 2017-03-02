@@ -38,12 +38,12 @@
 
                 <li>
                     <label for="amount">Payment Amount</label>
-                    <input type="text" name="amount" size="30" value="{{state}}" id="amount" autocomplete="off">
+                    <input type="text" name="amount" size="30" value="{{amount}}" id="amount" autocomplete="off">
                 </li>
 
                 <li>
                     <label for="region">Country</label>
-                    <select name="region" id="region">
+                    <select name="region_id" id="region">
                         <option disabled selected>Select Country</option>
                         {{#regions}}
                             <option value="{{id}}" {{#selected}}selected{{/selected}}>{{name}}</option>
@@ -54,6 +54,24 @@
                 <li>
                     <label for="reference_number">Reference Number</label>
                     <input type="text" name="reference_number" size="30" value="{{reference_number}}" id="reference_number" autocomplete="off">
+                </li>
+
+                <li>
+                    <h3>Products Purchased</h3>
+
+                    <ul id="products_purchased">
+
+                        {{#products}}
+                            <li>
+                                <h4>{{name}}</h4>
+
+                                <label for="quantities[{{order_product_id}}]">Amount Purchased</label>
+                                <input type="number" name="quantities[{{order_product_id}}]" size="30" value="{{quantity}}" id="amount" autocomplete="off">
+
+                            </li>
+                        {{/products}}
+
+                    </ul>
                 </li>
             </ul>
 

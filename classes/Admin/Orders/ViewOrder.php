@@ -10,6 +10,8 @@ namespace EasyProducts\Admin\Orders;
 
 
 use EasyProducts\Model\Order;
+use EasyProducts\Model\OrderProduct;
+use EasyProducts\Model\Product;
 use EasyProducts\Model\Region;
 use Exception;
 use WordWrap\Admin\TaskController;
@@ -29,6 +31,16 @@ class ViewOrder extends TaskController
     private $regions;
 
     /**
+     * @var OrderProduct[] All order products for the associated order
+     */
+    private $orderProducts;
+
+    /**
+     * @var Product[] All products in the system
+     */
+    private $products;
+
+    /**
      * override this to setup anything that needs to be done before
      * @param $action string the action the user is trying to complete
      * @throws Exception
@@ -42,6 +54,10 @@ class ViewOrder extends TaskController
         }
 
         $this->regions = Region::fetchAll();
+
+        $this->products = Product::fetchAll();
+
+        $this->orderProducts = OrderProduct::fetchForOrder($this->order);
     }
 
     /**
@@ -59,6 +75,22 @@ class ViewOrder extends TaskController
                 'name' => $region->name,
                 'selected' => $region->id == $this->order->region_id
             ];
+        }
+
+        $data['products'] = [];
+
+        foreach ($this->products as $product) {
+            foreach ($this->orderProducts as $orderProduct) {
+
+                if ($product->id == $orderProduct->product_id) {
+
+                    $data['products'][] = [
+                        'order_product_id' => $orderProduct->id,
+                        'quantity' => $orderProduct->quantity,
+                        'name' => $product->name
+                    ];
+                }
+            }
         }
 
         $template = new MustacheTemplate($this->lifeCycle, "admin/orders/view_order", $data);
