@@ -58,7 +58,31 @@ class ViewAll extends TaskController
             ];
         }
 
-        $data = ["orders" => $orders];
+        $links = '';
+
+        $i = 0;
+        while ($i < $this->totalPages) {
+
+            $data = [
+                'page' => $i + 1,
+                'active' => $i == $this->page
+            ];
+
+            $template = new MustacheTemplate($this->lifeCycle, "admin/orders/page_link", $data);
+
+            $links.= $template->export();
+
+            $i++;
+        }
+
+        $data = [
+            "orders" => $orders,
+            "page_links" => $links,
+            "first_page" => $this->page == 0,
+            "previous_page" => $this->page - 1,
+            "last_page" => $this->page == $this->totalPages - 1,
+            "next_page" => $this->page + 1,
+        ];
 
         $template = new MustacheTemplate($this->lifeCycle, "admin/orders/view_all", $data);
 
