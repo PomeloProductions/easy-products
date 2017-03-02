@@ -36,7 +36,7 @@ class ViewAll extends TaskController
      */
     public function processRequest($action = null) {
 
-        $this->page = (isset($_GET['page']) ?? 1) - 1;
+        $this->page = ($_GET['p'] ?? 1) - 1;
 
         $this->orders = Order::fetchPage($this->page);
 
@@ -79,9 +79,9 @@ class ViewAll extends TaskController
             "orders" => $orders,
             "page_links" => $links,
             "first_page" => $this->page == 0,
-            "previous_page" => $this->page - 1,
+            "previous_page" => $this->page,
             "last_page" => $this->page == $this->totalPages - 1,
-            "next_page" => $this->page + 1,
+            "next_page" => $this->page + 2,
         ];
 
         $template = new MustacheTemplate($this->lifeCycle, "admin/orders/view_all", $data);
