@@ -58,6 +58,39 @@ class ViewOrder extends TaskController
         $this->products = Product::fetchAll();
 
         $this->orderProducts = OrderProduct::fetchForOrder($this->order);
+
+        if ($action == 'edit') {
+            $this->updateOrder();
+        }
+    }
+
+    /**
+     * updates the order data based on the post info that was passed in
+     */
+    private function updateOrder() {
+
+        $this->order->name = $_POST['name'];
+        $this->order->address_line_1 = $_POST['address_line_1'];
+        $this->order->address_line_2 = $_POST['address_line_2'];
+        $this->order->postal_code = $_POST['postal_code'];
+        $this->order->state = $_POST['state'];
+        $this->order->amount = $_POST['amount'];
+        $this->order->region_id = $_POST['region_id'];
+        $this->order->reference_number = $_POST['reference_number'];
+        $this->order->shipped = $_POST['shipped'] == 'on';
+
+        $this->order->save();
+
+        foreach ($this->orderProducts as $orderProduct) {
+            foreach ($_POST['quantities'] as $orderProductId => $quantity) {
+
+                if ($orderProduct->id == $orderProductId) {
+                    $orderProduct->quantity = $quantity;
+
+                    $orderProduct->save();
+                }
+            }
+        }
     }
 
     /**
