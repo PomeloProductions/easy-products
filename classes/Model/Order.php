@@ -124,7 +124,7 @@ class Order extends BaseModel
      * @param String $referenceNumber
      * @return Order The new order object
      */
-    public static function create (String $name, String $addressLine1, String $addressLine2,
+    public static function createOrder (String $name, String $addressLine1, String $addressLine2,
                                     String $postalCode, String $state, Region $region, float $amount,
                                     String $referenceNumber) : Order{
 
@@ -164,6 +164,6 @@ class Order extends BaseModel
      */
     public static function fetchPage ($page = 0, $limit = 20) {
 
-        return static::fetchOrderedBy('created_by', 'DESC LIMIT '. $limit . ' OFFSET ' . $limit * $page);
+        return static::fetchOrderedBy('id', 'DESC LIMIT '. $limit . ' OFFSET ' . $limit * $page);
     }
 }

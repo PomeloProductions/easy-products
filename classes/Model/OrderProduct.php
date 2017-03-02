@@ -70,7 +70,7 @@ class OrderProduct extends BaseModel
      * @param int $quantity
      * @return OrderProduct
      */
-    public static function create (Order $order, Product $product, int $quantity) : OrderProduct {
+    public static function createOrderProduct (Order $order, Product $product, int $quantity) : OrderProduct {
 
         $orderProduct = new OrderProduct();
 
