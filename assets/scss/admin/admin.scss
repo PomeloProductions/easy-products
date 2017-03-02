@@ -24,6 +24,19 @@
   }
 }
 
+#order_details li {
+  label {
+    display: block;
+    font-weight: 600;
+    margin: 5px 0;
+  }
+
+  input {
+    width: 100%;
+    font-size: 18px;
+  }
+}
+
 #unique-options-list {
   li {
     display: inline-block;
