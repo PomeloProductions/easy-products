@@ -1,0 +1,30 @@
+#admin-view_all_orders {
+  width: 95%; }
+
+#orders_pages {
+  text-align: center; }
+  #orders_pages li {
+    display: inline-block;
+    margin: 0 5px; }
+    #orders_pages li .previous {
+      margin: 0 10px 0 0; }
+    #orders_pages li .next {
+      margin: 0 0 0 10px; }
+    #orders_pages li a[disabled],
+    #orders_pages li a.active {
+      text-decoration: none;
+      color: grey; }
+
+#order_details li label {
+  display: block;
+  font-weight: 600;
+  margin: 5px 0; }
+#order_details li select,
+#order_details li input {
+  width: 100%;
+  font-size: 18px; }
+
+#unique-options-list li {
+  display: inline-block;
+  width: 100px;
+  padding: 0 0 0 10px; }
