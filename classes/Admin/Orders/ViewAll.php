@@ -48,6 +48,16 @@ class ViewAll extends TaskController
      */
     protected function renderMainContent() {
 
+        $orders = [];
+
+        foreach ($this->orders as $order) {
+            $orders[] = [
+                'id' => $order->id,
+                'name' => $order->name,
+                'shipped_message' => $order->shipped ? 'Shipped' : 'Not Shipped'
+            ];
+        }
+
         $links = '';
 
         $i = 0;
@@ -66,7 +76,7 @@ class ViewAll extends TaskController
         }
 
         $data = [
-            "orders" => $this->orders,
+            "orders" => $orders,
             "page_links" => $links,
             "first_page" => $this->page == 0,
             "previous_page" => $this->page,
