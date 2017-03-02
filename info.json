@@ -65,8 +65,8 @@
               "default" : true
             },
             {
-              "name" : "Edit Order",
-              "className" : "\\Admin\\Orders\\Edit",
+              "name" : "View Order",
+              "className" : "\\Admin\\Orders\\ViewOrder",
               "actions" : ["edit"]
             }
           ]
