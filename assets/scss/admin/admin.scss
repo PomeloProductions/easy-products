@@ -1,5 +1,25 @@
 #admin-view_all_orders {
   width: 95%;
+}
 
+#orders_pages {
+  text-align: center;
 
+  li {
+    display: inline-block;
+    margin: 0 5px;
+
+    .previous {
+      margin: 0 10px 0 0;
+    }
+    .next {
+      margin: 0 0 0 10px;
+    }
+
+    a[disabled],
+    a.active {
+      text-decoration: none;
+      color: grey;
+    }
+  }
 }
