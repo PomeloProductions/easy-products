@@ -1,0 +1,46 @@
+<div id="poststuff">
+    <form id="post-body" class="metabox-holder columns-2" method="post">
+
+        <input type="hidden" name="action" value="edit"/>
+        <!-- Content -->
+        <div id="post-body-content">
+
+            <div id="titlediv">
+                <div id="titlewrap">
+                    <label class="screen-reader-text" id="title-prompt-text" for="title">Customer Name</label>
+                    <input type="text" name="name" size="30" value="{{name}}" id="title" spellcheck="true" autocomplete="off">
+                </div>
+            </div>
+
+
+
+            <div id="post-body">
+
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div id="postbox-container-1" class="postbox-container">
+            <div id="side-sortables" class="meta-box-sortables ui-sortable">
+                <div id="slider-unique-options" class="postbox">
+                    <h3 class="hndle"><span>Order Status</span></h3>
+                    <ul id="unique-options-list">
+
+                        <li>
+                            <label for="shipped">Shipped</label>
+                            <input type="hidden" name="shipped" value="off">
+                            <input type="checkbox" name="shipped" id="shipped" {{#shipped}}checked{{/shipped}}>
+                        </li>
+                    </ul>
+
+                    <div id="major-publishing-actions">
+                        <div id="publishing-action">
+                            <input type="submit" value="Save Order" id="save-buttom" class="button button-primary button-large">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
