@@ -46,7 +46,7 @@
       "RequiredAssets" : [
         {
           "type" : "css",
-          "name" : "admin.min"
+          "name" : "admin"
         }, {
           "type" : "js",
           "name" : "admin.min"
