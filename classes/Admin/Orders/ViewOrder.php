@@ -10,6 +10,7 @@ namespace EasyProducts\Admin\Orders;
 
 
 use EasyProducts\Model\Order;
+use EasyProducts\Model\Region;
 use Exception;
 use WordWrap\Admin\TaskController;
 use WordWrap\Assets\Template\Mustache\MustacheTemplate;
@@ -23,6 +24,11 @@ class ViewOrder extends TaskController
     private $order;
 
     /**
+     * @var Region[] All available regions for
+     */
+    private $regions;
+
+    /**
      * override this to setup anything that needs to be done before
      * @param $action string the action the user is trying to complete
      * @throws Exception
@@ -34,6 +40,8 @@ class ViewOrder extends TaskController
         if (!$this->order) {
             throw new Exception('Order not found');
         }
+
+        $this->regions = Region::fetchAll();
     }
 
     /**
@@ -41,7 +49,19 @@ class ViewOrder extends TaskController
      */
     protected function renderMainContent() {
 
-        $template = new MustacheTemplate($this->lifeCycle, "admin/orders/view_order", $this->order);
+        $data = (array) $this->order;
+
+        $data['regions'] = [];
+
+        foreach ($this->regions as $region) {
+            $data['regions'][] = [
+                'id' => $region->id,
+                'name' => $region->name,
+                'selected' => $region->id == $this->order->region_id
+            ];
+        }
+
+        $template = new MustacheTemplate($this->lifeCycle, "admin/orders/view_order", $data);
 
         return $template->export();
     }

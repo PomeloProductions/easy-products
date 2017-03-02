@@ -42,6 +42,16 @@
                 </li>
 
                 <li>
+                    <label for="region">Country</label>
+                    <select name="region" id="region">
+                        <option disabled selected>Select Country</option>
+                        {{#regions}}
+                            <option value="{{id}}" {{#selected}}selected{{/selected}}>{{name}}</option>
+                        {{/regions}}
+                    </select>
+                </li>
+
+                <li>
                     <label for="reference_number">Reference Number</label>
                     <input type="text" name="reference_number" size="30" value="{{reference_number}}" id="reference_number" autocomplete="off">
                 </li>
