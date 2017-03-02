@@ -155,6 +155,13 @@ class Order extends BaseModel
         return self::fetchWhere(['shipped' => $shipped ? '1' : '0']);
     }
 
+    /**
+     * Loads a page of orders
+     *
+     * @param int $page
+     * @param int $limit
+     * @return static[]
+     */
     public static function fetchPage ($page = 0, $limit = 20) {
 
         return static::fetchOrderedBy('created_by', 'DESC LIMIT '. $limit . ' OFFSET ' . $limit * $page);
