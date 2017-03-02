@@ -20,7 +20,7 @@
 </table>
 
 <ul id="orders_pages">
-    <li><a class="previous" {{#first_page}}disabled{{/first_page}} href="?page=easy_products&task=view_all&page{{previous_page}}">&lt;</a></li>
+    <li><a class="previous" {{#first_page}}disabled{{/first_page}} {{^first_page}}href="?page=easy_products&task=view_all&page{{previous_page}}"{{/first_page}}>&lt;</a></li>
     {{{page_links}}}
-    <li><a class="next" {{#last_page}}disabled{{/last_page}} href="?page=easy_products&task=view_all&page{{next_page}}">&gt;</a></li>
+    <li><a class="next" {{#last_page}}disabled{{/last_page}} {{^last_page}}href="?page=easy_products&task=view_all&page{{next_page}}"{{/last_page}}>&gt;</a></li>
 </ul>
