@@ -78,6 +78,8 @@
               "CrudIndex" : {
                 "modelClass" :  "EasyProducts\\Model\\Product",
                 "viewTask" : "view_product",
+                "displayName" : "Product",
+                "createTask" : "view_product&action=create",
                 "CrudColumn" : [
                   {
                     "name" : "name"
