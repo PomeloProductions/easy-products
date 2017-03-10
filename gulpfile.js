@@ -4,7 +4,7 @@
 
 
 const gulp = require('gulp');
-const less = require('gulp-scss');
+const scss = require('gulp-scss');
 const cssmin = require('gulp-cssmin');
 const watch = require('gulp-watch');
 const rename = require('gulp-rename');
@@ -65,7 +65,7 @@ gulp.task('js', function(){
 // gulp less task - compile LESS documents and minify
 gulp.task('app-scss', function(){
     return gulp.src(['./assets/scss/app/app.scss'])
-        .pipe(less().on('error', function(err){
+        .pipe(scss().on('error', function(err){
             console.log(err);
         }))
         .pipe(production(cssmin().on('error', function(err){
@@ -78,7 +78,7 @@ gulp.task('app-scss', function(){
 // gulp less task - compile LESS documents and minify
 gulp.task('admin-scss', function(){
     return gulp.src(['./assets/scss/admin/admin.scss'])
-        .pipe(less().on('error', function(err){
+        .pipe(scss().on('error', function(err){
             console.log(err);
         }))
         .pipe(production(cssmin().on('error', function(err){
