@@ -72,6 +72,24 @@
               "name" : "View Order",
               "className" : "\\Admin\\Orders\\ViewOrder",
               "actions" : ["edit"]
+            },
+            {
+              "name" : "View Products",
+              "CrudIndex" : {
+                "modelClass" :  "EasyProducts\\Model\\Product",
+                "CrudColumn" : [
+                  {
+                    "name" : "name"
+                  },
+                  {
+                    "name" : "image_url",
+                    "isImage" : true
+                  },
+                  {
+                    "name" : "description"
+                  }
+                ]
+              }
             }
           ]
         }
