@@ -9,10 +9,18 @@
 namespace EasyProducts\Admin;
 
 
+use EasyProducts\Model\Product;
 use WordWrap\Admin\TaskController;
+use WordWrap\Assets\Template\Mustache\MustacheTemplate;
+use WordWrap\Assets\View\Editor;
 
 class ViewProduct extends TaskController
 {
+
+    /**
+     * @var Product the template data needed
+     */
+    private $data;
 
     /**
      * override this to setup anything that needs to be done before
@@ -20,7 +28,16 @@ class ViewProduct extends TaskController
      */
     public function processRequest($action = null)
     {
-        // TODO: Implement processRequest() method.
+        if ($action == 'create') {
+            $this->data = [];
+        }
+        else {
+            $this->data = Product::find_one($_GET['id']);
+
+            $editor = new Editor($this->lifeCycle, 'description', $this->data->description, 'Description');
+
+            $this->data->description = $editor->export();
+        }
     }
 
     /**
@@ -28,7 +45,9 @@ class ViewProduct extends TaskController
      */
     protected function renderMainContent()
     {
-        // TODO: Implement renderMainContent() method.
+        $template = new MustacheTemplate($this->lifeCycle, 'admin/view_product', $this->data);
+
+        return $template->export();
     }
 
     /**

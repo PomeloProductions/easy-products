@@ -15,12 +15,12 @@
       text-decoration: none;
       color: grey; }
 
-#order_details li label {
+.model_fields li label {
   display: block;
   font-weight: 600;
   margin: 5px 0; }
-#order_details li select,
-#order_details li input {
+.model_fields li select,
+.model_fields li input {
   width: 100%;
   font-size: 18px; }
 
