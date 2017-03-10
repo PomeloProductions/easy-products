@@ -60,9 +60,13 @@
           "position" : 10,
           "Task" : [
             {
-              "name" : "View Orders",
-              "className" : "\\Admin\\Orders\\ViewAll",
+              "name" : "Products Management",
+              "className" : "\\Admin\\Index",
               "default" : true
+            },
+            {
+              "name" : "View Orders",
+              "className" : "\\Admin\\Orders\\ViewAll"
             },
             {
               "name" : "View Order",
