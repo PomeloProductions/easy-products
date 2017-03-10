@@ -57,6 +57,7 @@ class ViewProduct extends TaskController
         $editor = new Editor($this->lifeCycle, 'description', $this->product->description, 'Description');
 
         $this->product->description = $editor->export();
+        wp_enqueue_media();
 
         $template = new MustacheTemplate($this->lifeCycle, 'admin/view_product', $this->product);
 
