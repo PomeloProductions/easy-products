@@ -29,6 +29,7 @@ class ViewProduct extends TaskController
     public function processRequest($action = null)
     {
 
+        wp_enqueue_media();
         if (isset ($_GET['id'])) {
             $this->product = Product::find_one($_GET['id']);
         }
@@ -41,6 +42,7 @@ class ViewProduct extends TaskController
             $this->product->description = $_POST['description'];
             $this->product->weight = $_POST['weight'];
             $this->product->cost = $_POST['cost'];
+            $this->product->image_url = $_POST['image_url'];
 
             $this->product->active = $_POST['active'] == 'on';
 
@@ -57,7 +59,6 @@ class ViewProduct extends TaskController
         $editor = new Editor($this->lifeCycle, 'description', $this->product->description, 'Description');
 
         $this->product->description = $editor->export();
-        wp_enqueue_media();
 
         $template = new MustacheTemplate($this->lifeCycle, 'admin/view_product', $this->product);
 
