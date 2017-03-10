@@ -20,7 +20,7 @@ class ViewProduct extends TaskController
     /**
      * @var Product the template data needed
      */
-    private $product;
+    protected $product;
 
     /**
      * override this to setup anything that needs to be done before
@@ -29,9 +29,14 @@ class ViewProduct extends TaskController
     public function processRequest($action = null)
     {
 
-        $this->product = Product::find_one($_GET['id']);
+        if (isset ($_GET['id'])) {
+            $this->product = Product::find_one($_GET['id']);
+        }
+        else {
+            $this->product = new Product();
+        }
 
-        if ($action == 'edit') {
+        if ($action == 'save') {
             $this->product->name = $_POST['name'];
             $this->product->description = $_POST['description'];
             $this->product->weight = $_POST['weight'];
@@ -41,10 +46,6 @@ class ViewProduct extends TaskController
 
             $this->product->save();
         }
-
-        $editor = new Editor($this->lifeCycle, 'description', $this->product->description, 'Description');
-
-        $this->product->description = $editor->export();
     }
 
     /**
@@ -52,6 +53,11 @@ class ViewProduct extends TaskController
      */
     protected function renderMainContent()
     {
+
+        $editor = new Editor($this->lifeCycle, 'description', $this->product->description, 'Description');
+
+        $this->product->description = $editor->export();
+
         $template = new MustacheTemplate($this->lifeCycle, 'admin/view_product', $this->product);
 
         return $template->export();

@@ -79,7 +79,7 @@
                 "modelClass" :  "EasyProducts\\Model\\Product",
                 "viewTask" : "view_product",
                 "displayName" : "Product",
-                "createTask" : "view_product&action=create",
+                "createTask" : "create_product",
                 "CrudColumn" : [
                   {
                     "name" : "name"
@@ -95,9 +95,14 @@
               }
             },
             {
+              "name" : "Create Product",
+              "className" : "\\Admin\\CreateProduct",
+              "actions" : ["save"]
+            },
+            {
               "name" : "View Product",
               "className" : "\\Admin\\ViewProduct",
-              "actions" : ["edit", "create"]
+              "actions" : ["save"]
             }
           ]
         }
