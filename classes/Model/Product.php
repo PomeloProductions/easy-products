@@ -52,7 +52,7 @@ class Product extends BaseModel
     /**
      * @var ShippingOption[] All shipping options for the product
      */
-    public $shippingOptions;
+    public $shippingOptions = [];
 
     /**
      * Loads the parent constructor and sets the shipping options properly
@@ -60,10 +60,12 @@ class Product extends BaseModel
      * Product constructor.
      * @param array $properties
      */
-    public function __construct($properties) {
+    public function __construct($properties = []) {
         parent::__construct($properties);
 
-        $this->shippingOptions = ShippingOption::fetchForProduct($this);
+        if ($this->id) {
+            $this->shippingOptions = ShippingOption::fetchForProduct($this);
+        }
     }
 
     /**
