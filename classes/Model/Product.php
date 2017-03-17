@@ -49,6 +49,22 @@ class Product extends BaseModel
      */
     public $active = false;
 
+    /**
+     * @var ShippingOption[] All shipping options for the product
+     */
+    public $shippingOptions;
+
+    /**
+     * Loads the parent constructor and sets the shipping options properly
+     *
+     * Product constructor.
+     * @param array $properties
+     */
+    public function __construct($properties) {
+        parent::__construct($properties);
+
+        $this->shippingOptions = ShippingOption::fetchForProduct($this);
+    }
 
     /**
      * Fetch all products ordered by the order field
