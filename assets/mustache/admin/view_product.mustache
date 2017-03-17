@@ -52,6 +52,9 @@
 
                         {{#shipping_options}}
                             <li class="shipping_rate_entry">
+
+                                <input type="hidden" name="shipping_rate[id][]" value="{{id}}"/>
+
                                 <select class="shipping_rate-region" name="shipping_rate[region][]">
                                     <option selected disabled>Select Shipping Rate Region</option>
                                     {{#regions}}
@@ -77,6 +80,9 @@
 
                         {{^shipping_options}}
                             <li class="shipping_rate_entry">
+
+                                <input type="hidden" name="shipping_rate[id][]" value="{{id}}"/>
+
                                 <select class="shipping_rate-region" name="shipping_rate[region][]">
                                     <option selected disabled>Select Shipping Rate Region</option>
                                     {{#regions}}
