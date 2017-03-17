@@ -66,6 +66,9 @@ class ViewProduct extends TaskController
             $this->product->active = $_POST['active'] == 'on';
 
             $this->product->save();
+
+            $this->defaultRate->primary_rate = $_POST['default_primary_rate'];
+            $this->defaultRate->add_on_rate = $_POST['default_add_on_rate'];
         }
     }
 
