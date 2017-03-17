@@ -45,3 +45,10 @@
     padding: 0 0 0 10px;
   }
 }
+
+.shipping_rate-rates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
