@@ -15,7 +15,13 @@ export class ShippingRateTemplate {
 
         let regionSelect = this.template.querySelector('.shipping_rate-region');
 
-        regionSelect.selectedIndex = 0;
+        let options = regionSelect.getElementsByTagName('option');
+
+        for (let i = 0; i < options.length; i++) {
+            if (i != 0) {
+                options[i].removeAttribute('selected');
+            }
+        }
 
         let inputs = this.template.getElementsByTagName('input');
 
