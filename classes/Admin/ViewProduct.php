@@ -10,6 +10,7 @@ namespace EasyProducts\Admin;
 
 
 use EasyProducts\Model\Product;
+use EasyProducts\Model\Region;
 use EasyProducts\Model\ShippingOption;
 use WordWrap\Admin\TaskController;
 use WordWrap\Assets\Template\Mustache\MustacheTemplate;
@@ -78,6 +79,7 @@ class ViewProduct extends TaskController
         $editor = new Editor($this->lifeCycle, 'description', $this->product->description, 'Description');
 
         $data = [
+            'regions' => Region::fetchAll(),
             'product' => $this->product,
             'description' => $editor->export(),
             'default_rate' => $this->defaultRate

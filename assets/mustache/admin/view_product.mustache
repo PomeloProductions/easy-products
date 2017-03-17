@@ -5,6 +5,11 @@
         <!-- Content -->
         <div id="post-body-content">
 
+
+            {{#regions}}
+                <span class="region_data" data-id="{{id}}" data-name="{{name}}"></span>
+            {{/regions}}
+
             <ul id="product_details" class="model_fields">
                 <li>
                     <label for="name">Name</label>
