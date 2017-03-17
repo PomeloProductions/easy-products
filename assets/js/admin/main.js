@@ -1,6 +1,8 @@
 /**
  * Created by bryce on 2/8/17.
  */
+import {ShippingRatesManager} from './classes/ShippingRatesManager';
+
 jQuery(document).ready(function($){
     $('#upload-btn').click(function(e) {
         e.preventDefault();
@@ -20,4 +22,10 @@ jQuery(document).ready(function($){
                 $('#image_url').val(image_url);
             });
     });
+
+    let shippingRatesList = document.getElementById('shipping_rates');
+
+    if (typeof shippingRatesList != 'undefined') {
+        new ShippingRatesManager(shippingRatesList);
+    }
 });
