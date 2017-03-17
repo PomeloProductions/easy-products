@@ -75,15 +75,15 @@ class ViewProduct extends TaskController
      */
     protected function renderMainContent()
     {
-
         $editor = new Editor($this->lifeCycle, 'description', $this->product->description, 'Description');
 
-        $this->product->description = $editor->export();
+        $data = [
+            'product' => $this->product,
+            'description' => $editor->export(),
+            'default_rate' => $this->defaultRate
+        ];
 
-        $this->product->default_primary_rate = $this->defaultRate->primary_rate;
-        $this->product->default_add_on_rate = $this->defaultRate->add_on_rate;
-
-        $template = new MustacheTemplate($this->lifeCycle, 'admin/view_product', $this->product);
+        $template = new MustacheTemplate($this->lifeCycle, 'admin/view_product', $data);
 
         return $template->export();
     }

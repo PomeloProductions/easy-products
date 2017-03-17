@@ -8,7 +8,7 @@
             <ul id="product_details" class="model_fields">
                 <li>
                     <label for="name">Name</label>
-                    <input type="text" name="name" size="30" value="{{name}}" id="name" autocomplete="off">
+        <input type="text" name="name" size="30" value="{{#product}}{{name}}{{/product}}" id="name" autocomplete="off">
                 </li>
 
 
@@ -19,19 +19,32 @@
 
                 <li>
                     <label for="image_url">Image</label>
-                    <input type="text" name="image_url" id="image_url" class="regular-text" value="{{image_url}}">
+                    <input type="text" name="image_url" id="image_url" class="regular-text" value="{{#product}}{{image_url}}{{/product}}">
                     <input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="Upload Image">
                 </li>
 
 
                 <li>
                     <label for="weight">Weight</label>
-                    <input type="text" name="weight" size="30" value="{{weight}}" id="weight" autocomplete="off">
+                    <input type="text" name="weight" size="30" value="{{#product}}{{weight}}{{/product}}" id="weight" autocomplete="off">
                 </li>
 
                 <li>
                     <label for="cost">Cost</label>
-                    <input type="text" name="amount" size="30" value="{{cost}}" id="cost" autocomplete="off">
+                    <input type="text" name="amount" size="30" value="{{#product}}{{cost}{{/product}}}" id="cost" autocomplete="off">
+                </li>
+
+                <li>
+                    <label for="shipping_rates">Shipping Rates <button id="btn_add_shipping_rate">+</button></label>
+                    <ul id="shipping_rates">
+                        <li>
+                            Default Shipping Rate
+                            <label for="default_primary_rate">Primary Rate</label>
+                            <input required type="number" name="default_primary_rate" id="default_primary_rate" value="{{#default_rate}}{{primary_rate}}{{/default_rate}}">
+                            <label for="default_add_on_rate">Add On Rate</label>
+                            <input required type="number" name="default_add_on_rate" id="default_add_on_rate" value="{{#default_rate}}{{add_on_rate}}{{/default_rate}}">
+                        </li>
+                    </ul>
                 </li>
 
             </ul>
@@ -48,7 +61,7 @@
                         <li>
                             <label for="shipped">Active</label>
                             <input type="hidden" name="active" value="off">
-                            <input type="checkbox" name="active" id="active" {{#active}}checked{{/active}}>
+                            <input type="checkbox" name="active" id="active" {{#product}}{{#active}}checked{{/active}}{{/product}}>
                         </li>
                     </ul>
 
