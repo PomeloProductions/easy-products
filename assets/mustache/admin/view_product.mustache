@@ -36,11 +36,11 @@
 
                 <li>
                     <label for="cost">Cost</label>
-                    <input type="text" name="amount" size="30" value="{{#product}}{{cost}{{/product}}}" id="cost" autocomplete="off">
+                    <input type="text" name="amount" size="30" value="{{#product}}{{cost}}{{/product}}" id="cost" autocomplete="off">
                 </li>
 
                 <li>
-                    <label for="shipping_rates">Shipping Rates <button id="btn_add_shipping_rate">+</button></label>
+                    <h3>Shipping Rates <button id="btn_add_shipping_rate">+</button></h3>
                     <ul id="shipping_rates">
                         <li>
                             Default Shipping Rate
@@ -49,6 +49,56 @@
                             <label for="default_add_on_rate">Add On Rate</label>
                             <input required type="number" name="default_add_on_rate" id="default_add_on_rate" value="{{#default_rate}}{{add_on_rate}}{{/default_rate}}">
                         </li>
+
+                        {{#shipping_options}}
+                            <li class="shipping_rate_entry">
+                                <select class="shipping_rate-region" name="shipping_rate[region][]">
+                                    <option selected disabled>Select Shipping Rate Region</option>
+                                    {{#regions}}
+                                        <option {{#selected}}selected{{/selected}} value="{{id}}">{{name}}</option>
+                                    {{/regions}}
+                                </select>
+
+                                <div class="shipping_rate-rates">
+                                    <label>
+                                        Primary Rate
+                                        <input type="number" value="{{primary_rate}}" name="shipping_rate[primary_rate][]">
+                                    </label>
+
+                                    <label>
+                                        Add On Rate
+                                        <input type="number" value="{{add_on_rate}}" name="shipping_rate[add_on_rate][]">
+                                    </label>
+
+                                    <button class="remote_rate">Remove Rate</button>
+                                </div>
+                            </li>
+                        {{/shipping_options}}
+
+                        {{^shipping_options}}
+                            <li class="shipping_rate_entry">
+                                <select class="shipping_rate-region" name="shipping_rate[region][]">
+                                    <option selected disabled>Select Shipping Rate Region</option>
+                                    {{#regions}}
+                                        <option value="{{id}}">{{name}}</option>
+                                    {{/regions}}
+                                </select>
+
+                                <div class="shipping_rate-rates">
+                                    <label>
+                                        Primary Rate
+                                        <input type="number" name="shipping_rate[primary_rate][]">
+                                    </label>
+
+                                    <label>
+                                        Add On Rate
+                                        <input type="number" name="shipping_rate[add_on_rate][]">
+                                    </label>
+
+                                    <button class="remote_rate">Remove Rate</button>
+                                </div>
+                            </li>
+                        {{/shipping_options}}
                     </ul>
                 </li>
 

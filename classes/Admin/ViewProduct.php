@@ -48,7 +48,6 @@ class ViewProduct extends TaskController
 
             $shippingOption = $this->product->shippingOptions[$i];
             if (!$shippingOption->region_id) {
-                unset($this->product->shippingOptions[$i]);
 
                 $this->defaultRate = $shippingOption;
             }
@@ -77,9 +76,29 @@ class ViewProduct extends TaskController
     protected function renderMainContent()
     {
         $editor = new Editor($this->lifeCycle, 'description', $this->product->description, 'Description');
+        $regions = Region::fetchAll();
+
+        $shippingOptions = [];
+
+        foreach ($this->product->shippingOptions as $shippingOption) {
+            if ($shippingOption->region_id) {
+
+                $shippingOption->regions = $regions;
+
+                foreach ($shippingOption->regions as $region) {
+
+                    if ($region->id == $shippingOption->region_id) {
+                        $region->selected = true;
+                    }
+                }
+
+                $shippingOptions[] = $shippingOption;
+            }
+        }
 
         $data = [
-            'regions' => Region::fetchAll(),
+            'regions' => $regions,
+            'shipping_options' => $shippingOptions,
             'product' => $this->product,
             'description' => $editor->export(),
             'default_rate' => $this->defaultRate
