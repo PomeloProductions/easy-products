@@ -44,14 +44,17 @@
                     <ul id="shipping_rates">
                         <li class="shipping_rate_row">
                             <h3>Default Shipping Rate</h3>
-                            <label for="default_primary_rate">
-                                Primary Rate
-                                <input required type="number" name="default_primary_rate" id="default_primary_rate" value="{{#default_rate}}{{primary_rate}}{{/default_rate}}">
-                            </label>
-                            <label for="default_add_on_rate">
-                                Add On Rate
-                                <input required type="number" name="default_add_on_rate" id="default_add_on_rate" value="{{#default_rate}}{{add_on_rate}}{{/default_rate}}">
-                            </label>
+
+                            <div class="shipping_rate-rates">
+                                <label for="default_primary_rate">
+                                    Primary Rate
+                                    <input required type="number" name="default_primary_rate" id="default_primary_rate" value="{{#default_rate}}{{primary_rate}}{{/default_rate}}">
+                                </label>
+                                <label for="default_add_on_rate">
+                                    Add On Rate
+                                    <input required type="number" name="default_add_on_rate" id="default_add_on_rate" value="{{#default_rate}}{{add_on_rate}}{{/default_rate}}">
+                                </label>
+                            </div>
                         </li>
 
                         {{#shipping_options}}
