@@ -92,7 +92,7 @@ class ViewProduct extends TaskController
                 else if (is_numeric($_POST['shipping_rate']['region'][$i])) {
 
                     $shippingOption = new ShippingOption();
-                    
+
                     $shippingOption->product_id = $this->product->id;
                     $shippingOption->primary_rate = $_POST['shipping_rate']['primary_rate'][$i];
                     $shippingOption->add_on_rate = $_POST['shipping_rate']['add_on_rate'][$i];
@@ -120,7 +120,11 @@ class ViewProduct extends TaskController
         foreach ($this->product->shippingOptions as $shippingOption) {
             if ($shippingOption->region_id) {
 
-                $shippingOption->regions = $regions;
+                $shippingOption->regions = [];
+
+                foreach ( $regions as $region) {
+                    $shippingOption->regions[] = clone $region;
+                }
 
                 foreach ($shippingOption->regions as $region) {
 
