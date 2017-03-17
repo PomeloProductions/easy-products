@@ -10,6 +10,7 @@ namespace EasyProducts\Admin;
 
 
 use EasyProducts\Model\Product;
+use EasyProducts\Model\ShippingOption;
 use WordWrap\Admin\TaskController;
 use WordWrap\Assets\Template\Mustache\MustacheTemplate;
 use WordWrap\Assets\View\Editor;
@@ -21,6 +22,11 @@ class ViewProduct extends TaskController
      * @var Product the template data needed
      */
     protected $product;
+
+    /**
+     * @var ShippingOption the default shipping rate for this product
+     */
+    private $defaultRate;
 
     /**
      * override this to setup anything that needs to be done before
@@ -35,6 +41,20 @@ class ViewProduct extends TaskController
         }
         else {
             $this->product = new Product();
+        }
+
+        for ($i = 0, count($this->product->shippingOptions), $i++) {
+
+            $shippingOption = $this->product->shippingOptions[$i];
+            if (!$shippingOption->region_id) {
+                unset($this->product->shippingOptions[$i]);
+
+                $this->defaultRate = $shippingOption;
+            }
+        }
+
+        if (!$this->defaultRate) {
+            $this->defaultRate = new ShippingOption();
         }
 
         if ($action == 'save') {
