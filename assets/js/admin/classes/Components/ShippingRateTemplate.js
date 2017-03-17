@@ -5,7 +5,7 @@
 export class ShippingRateTemplate {
 
     /**
-     *
+     * Creates a new template holder for easily duplicating the shipping rate template
      *
      * @param templateContent Node
      */
