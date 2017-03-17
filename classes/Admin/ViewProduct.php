@@ -36,7 +36,6 @@ class ViewProduct extends TaskController
     public function processRequest($action = null)
     {
 
-        wp_enqueue_media();
         if (isset ($_GET['id'])) {
             $this->product = Product::find_one($_GET['id']);
         }
