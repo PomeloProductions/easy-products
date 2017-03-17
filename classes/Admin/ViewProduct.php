@@ -71,6 +71,37 @@ class ViewProduct extends TaskController
             $this->defaultRate->add_on_rate = $_POST['default_add_on_rate'];
 
             $this->defaultRate->save();
+
+            for ($i = 0; $i < count($_POST['shipping_rate']['id']); $i++) {
+
+                $id = $_POST['shipping_rate']['id'][$i];
+
+                if ($id) {
+
+                    foreach ($this->product->shippingOptions as $shippingOption) {
+                        if ($id == $shippingOption->id) {
+                            $shippingOption->primary_rate = $_POST['shipping_rate']['primary_rate'][$i];
+                            $shippingOption->add_on_rate = $_POST['shipping_rate']['add_on_rate'][$i];
+                            $shippingOption->region_id = $_POST['shipping_rate']['region'][$i];
+
+                            $shippingOption->save();
+                        }
+                    }
+                }
+                else {
+
+                    $shippingOption = new ShippingOption();
+
+                    $shippingOption->product_id = $this->product->id;
+                    $shippingOption->primary_rate = $_POST['shipping_rate']['primary_rate'][$i];
+                    $shippingOption->add_on_rate = $_POST['shipping_rate']['add_on_rate'][$i];
+                    $shippingOption->region_id = $_POST['shipping_rate']['region'][$i];
+
+                    $shippingOption->save();
+
+                    $this->product->shippingOptions[] = $shippingOption;
+                }
+            }
         }
     }
 
