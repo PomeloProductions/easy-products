@@ -43,7 +43,7 @@ class ViewProduct extends TaskController
             $this->product = new Product();
         }
 
-        for ($i = 0, count($this->product->shippingOptions), $i++) {
+        for ($i = 0; $i < count($this->product->shippingOptions); $i++) {
 
             $shippingOption = $this->product->shippingOptions[$i];
             if (!$shippingOption->region_id) {
@@ -79,6 +79,9 @@ class ViewProduct extends TaskController
         $editor = new Editor($this->lifeCycle, 'description', $this->product->description, 'Description');
 
         $this->product->description = $editor->export();
+
+        $this->product->default_primary_rate = $this->defaultRate->primary_rate;
+        $this->product->default_add_on_rate = $this->defaultRate->add_on_rate;
 
         $template = new MustacheTemplate($this->lifeCycle, 'admin/view_product', $this->product);
 
