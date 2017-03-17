@@ -89,21 +89,19 @@ class ViewProduct extends TaskController
                         }
                     }
                 }
-                else {
+                else if (is_numeric($_POST['shipping_rate']['region'][$i])) {
 
                     $shippingOption = new ShippingOption();
+                    
+                    $shippingOption->product_id = $this->product->id;
+                    $shippingOption->primary_rate = $_POST['shipping_rate']['primary_rate'][$i];
+                    $shippingOption->add_on_rate = $_POST['shipping_rate']['add_on_rate'][$i];
+                    $shippingOption->region_id = $_POST['shipping_rate']['region'][$i];
 
-                    if ($_POST['shipping_rate']['region'][$i]) {
-                        $shippingOption->product_id = $this->product->id;
-                        $shippingOption->primary_rate = $_POST['shipping_rate']['primary_rate'][$i];
-                        $shippingOption->add_on_rate = $_POST['shipping_rate']['add_on_rate'][$i];
-                        $shippingOption->region_id = $_POST['shipping_rate']['region'][$i];
+                    $shippingOption->save();
 
-                        $shippingOption->save();
+                    $this->product->shippingOptions[] = $shippingOption;
 
-                        $this->product->shippingOptions[] = $shippingOption;
-
-                    }
                 }
             }
         }
