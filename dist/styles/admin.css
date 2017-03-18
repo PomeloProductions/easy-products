@@ -1,15 +1,22 @@
+#admin-wordwrap_crud,
 #admin-view_all_orders {
   width: 95%; }
 
+#pages,
 #orders_pages {
   text-align: center; }
+  #pages li,
   #orders_pages li {
     display: inline-block;
     margin: 0 5px; }
+    #pages li .previous,
     #orders_pages li .previous {
       margin: 0 10px 0 0; }
+    #pages li .next,
     #orders_pages li .next {
       margin: 0 0 0 10px; }
+    #pages li a[disabled],
+    #pages li a.active,
     #orders_pages li a[disabled],
     #orders_pages li a.active {
       text-decoration: none;
@@ -28,3 +35,15 @@
   display: inline-block;
   width: 100px;
   padding: 0 0 0 10px; }
+
+.shipping_rate-rates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; }
+
+.ui-sortable-handle {
+  cursor: move; }
+
+.ui-sortable-helper {
+  background: white; }
