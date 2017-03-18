@@ -86,6 +86,19 @@ class Product extends BaseModel
         return static::fetchOrderedBy('order', 'ASC');
     }
 
+
+    /**
+     * Loads a page of orders
+     *
+     * @param int $page
+     * @param int $limit
+     * @return static[]
+     */
+    public static function fetchPage ($page = 0, $limit = 20) {
+
+        return static::fetchOrderedBy('order', 'DESC LIMIT '. $limit . ' OFFSET ' . $limit * $page);
+    }
+
     /**
      * Overwrite this in your concrete class. Returns the table name used to
      * store models of this class.
