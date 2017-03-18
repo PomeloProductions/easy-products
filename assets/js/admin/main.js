@@ -2,6 +2,7 @@
  * Created by bryce on 2/8/17.
  */
 import {ShippingRatesManager} from './classes/ShippingRatesManager';
+import {ProductsList} from './classes/ProductsList';
 
 jQuery(document).ready(function($){
     $('#upload-btn').click(function(e) {
@@ -25,7 +26,13 @@ jQuery(document).ready(function($){
 
     let shippingRatesList = document.getElementById('shipping_rates');
 
-    if (typeof shippingRatesList != 'undefined') {
+    if (shippingRatesList != null) {
         new ShippingRatesManager(shippingRatesList);
+    }
+
+    let productsList = document.getElementById('admin-wordwrap_crud');
+
+    if (typeof productsList != 'undefined') {
+        new ProductsList(productsList);
     }
 });
