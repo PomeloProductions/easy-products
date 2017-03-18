@@ -4,6 +4,7 @@
   "displayName" : "Easy Products",
   "minPHPVersion" : "7.0.0",
   "LifeCycle" : {
+    "className" : "Plugin",
     "databaseNameSpace" : "easy_products",
     "AssetLocation" : [
       {
