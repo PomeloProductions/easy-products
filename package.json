@@ -38,6 +38,7 @@
   },
   "homepage": "https://github.com/pomeloproductions/easy-products#readme",
   "dependencies": {
-    "gsap": "^1.19.1"
+    "gsap": "^1.19.1",
+    "jquery-sortable": "^0.9.13"
   }
 }
