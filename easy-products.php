@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Easy Products
  * Plugin URI: https://github.com/pomeloproductions/easy-products
- * Version: 0.5.0
+ * Version: 0.6.0
  * Author: Pomelo Productions
  * Description: Easily manage products, and allow users to add products to a shopping cart
  * Text Domain: easy-products
